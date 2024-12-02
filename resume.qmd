@@ -1,89 +1,80 @@
 ---
 layout: cv
-title: Isaac Newtons's CV
+title: Alex Tovar's CV
 ---
-# Isaac Newton
-Physicist, Mathematician, Cambridge professor.
-
-<div id="webaddress">
-<a href="isaac@applesdofall.org">isaac@applesdofall.org</a>
-| <a href="http://en.wikipedia.org/wiki/Isaac_Newton">My wikipedia page</a>
-</div>
+# Alex Tovar
+Student, Programmer and Aspiring Data Scientist
 
 
-## Currently
+## Objective 
+My name is Alex Tovar, I’m currently challenging myself to pursue a 
+Data Science degree by mastering tools, such as libraries, 
+programming languages, advanced mathematics, and methods to 
+research data-driven knowledge to make decisions. Also, 
+emphasizing in Machine Learning and Applied Mathematics. 
 
-Standing on the shoulders of giants
-
-### Specialized in
-
-Laws of motion, gravitation, minting coins, disliking [Robert Hooke](http://en.wikipedia.org/wiki/Robert_Hooke)
-
-
-### Research interests
-
-Cooling, power series, optics, alchemy, planetary motions, apples.
-
-
-## Education
-
-`1654-1660`
-__The King's School, Grantham.__
-
-`June 1661 - now`
-__Trinity College, Cambridge__
-
-- Sizar
-
-`1667 - death`
-__Trinity College, Cambridge__
-
-- Fellow
+## Education 
+Brigham Young University-Idaho 
+2024-(PROJECTED CLASS OF 2026) 
+BA in Data Science 
+(General Mathematics Cluster) 
+Statistics Minor 
+High School Diploma, Class of 2024 
+Huntingtown High School, Maryland,  
+Advanced Placement Student: 
+(Passed 7 AP classes + 2 Self 
+Studied) 
+GPA 3.8+ 
+Awarded Maryland Biliteracy Seal
 
 
+## Certifications  
+(Awarded by Graduation) 
+Data science certificate 
+Machine Learning Certificate 
 
-## Awards
+## Attributes 
+Bilingual (Spanish) 
+Adaptable 
+Team Collaboration 
+Problem Solver 
+Analytical Skills 
 
-`2012`
-President, *Royal Society*, London, UK
+# Objective 
+My name is Alex Tovar, I’m currently challenging myself to pursue a 
+Data Science degree by mastering tools, such as libraries, 
+programming languages, advanced mathematics, and methods to 
+research data-driven knowledge to make decisions. Also, 
+emphasizing in Machine Learning and Applied Mathematics. 
 
-Associate, *French Academy of Science*, Paris, France
+## Experience 
+#### Programmed with Java – 2 years 
+While taking advanced placement courses, I’ve collaborated with 
+study groups to complete extra work outside of class within a 
+personal development environment to develop additional skills with 
+programming fundamentals, concepts, algorithms, and tools such 
+as VSCODE. 
 
+#### Tropical Smoothie – 1 year 
+June (2023) – September (2024) 
+#### McDonald’s – (½) year 
+Summer (2023) & Summer (2024) 
+Worked both jobs over both summers working up to 64-hour weeks 
+collaborating, maintaining logistics, solving problems, and working 
+in a fast-paced environment.
 
+## Extracurriculars 
+#### Data Science Society Projects 
+To gain experience in a simulated and collaborative environment, 
+contributing to the “Blood Test” project designed to provide 
+incoming freshman experience and familiarity with data science 
+practices and tools. Through this project, participants will become 
+familiar with data visualization, grouping and aggregating data, 
+discovering trends or patterns, and identifying outliers. 
 
-## Publications
-
-<!-- A list is also available [online](http://scholar.google.co.uk/citations?user=LTOTl0YAAAAJ) -->
-
-### Journals
-
-`1669`
-Newton Sir I, De analysi per æquationes numero terminorum infinitas. 
-
-`1669`
-Lectiones opticæ.
-
-etc. etc. etc.
-
-### Patents
-
-`2012`
-Infinitesimal calculus for solutions to physics problems, [SMBC](http://www.techdirt.com/articles/20121011/09312820678/if-patents-had-been-around-time-newton.shtml) patent 001
-
-
-## Occupation
-
-`1600`
-__Royal Mint__, London
-
-- Warden
-- Minted coins
-
-`1600`
-__Lucasian professor of Mathematics__, Cambridge University
-
-
-
-<!-- ### Footer
-
-Last updated: May 2013 -->
+#### Independent Programmer (Python, R, SQL, Matplotlib, 
+NumPy, Pandas, Spark) 
+Independently contributing to projects and repositories on GitHub to 
+build analytical and problem-solving skills outside of the classroom 
+environment. This allows me to diversify in practical programming 
+languages to collaborate on more projects in the future.
