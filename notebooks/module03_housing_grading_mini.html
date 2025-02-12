@@ -191,7 +191,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Click the folder icon, then click the upload icon (paper with an upward arrow)</p></li>
 <li><p>Run the notebook (Runtime -&gt; Run all)</p></li>
 </ul>
-<div id="cell-1" class="cell" data-execution_count="1">
+<div id="cell-1" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MODULE 03 - HOUSING HOLDOUT GRADING</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
@@ -212,13 +212,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># print(team_list)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-2" class="cell" data-execution_count="2">
+<div id="cell-2" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># READ IN THE HOLDOUT ANSWERS</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>targets_file <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/housing_holdout_test_mini_answers.csv"</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>targets <span class="op">=</span> pd.read_csv(targets_file)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># targets</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-3" class="cell" data-outputid="40f922c1-aad2-4f10-b502-bfc858a695ed" data-execution_count="3">
+<div id="cell-3" class="cell" data-outputid="b5077806-866c-49e1-db07-c297d406b6ac" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ARE THE STUDENT DATASETS THE CORRECT LENGTH</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>student_datasets <span class="op">=</span> {}</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (group, <span class="bu">file</span>) <span class="kw">in</span> team_list:</span>
@@ -233,13 +233,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>Group team8 added successfully</code></pre>
 </div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="4">
+<div id="cell-4" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># student_datasets</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="5">
+<div id="cell-5" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>results_dict <span class="op">=</span> {}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="6">
+<div id="cell-6" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> group, student_ds <span class="kw">in</span> student_datasets.items():</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  student_dict <span class="op">=</span> {}</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># print(group,cm)</span></span>
@@ -273,13 +273,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  results_dict[group] <span class="op">=</span> student_dict</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="7">
+<div id="cell-7" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># df['predictions']</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="8">
+<div id="cell-8" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># results_dict</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-9" class="cell" data-execution_count="9">
+<div id="cell-9" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>results_df <span class="op">=</span> pd.DataFrame(results_dict)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>results_ds_trans <span class="op">=</span> results_df.transpose()</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>results_ds_trans <span class="op">=</span> results_ds_trans.drop(columns<span class="op">=</span>[<span class="st">"dataset"</span>])</span>
@@ -287,10 +287,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>results_ds_trans <span class="op">=</span> results_ds_trans.<span class="bu">round</span>(<span class="dv">2</span>)</span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>results_ds_trans <span class="op">=</span> results_ds_trans.sort_values(by<span class="op">=</span><span class="st">"R2"</span>,ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-10" class="cell" data-execution_count="10">
+<div id="cell-10" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># results_df</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-11" class="cell" data-outputid="9cfe010b-dacf-43a9-ded4-7b42865e7519" data-execution_count="11">
+<div id="cell-11" class="cell" data-outputid="800bd69f-2a0c-43f8-9fd8-42c3b68077cb" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>(rc<span class="op">=</span>{<span class="st">'figure.figsize'</span>:(<span class="fl">11.7</span>,<span class="fl">8.27</span>)})</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> team_results <span class="kw">in</span> results_dict.items():</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  testfinal <span class="op">=</span> team_results[<span class="dv">1</span>][<span class="st">'dataset'</span>]</span>
@@ -344,15 +344,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </code></pre>
 </div>
 </div>
-<div id="cell-12" class="cell" data-outputid="49f90bfc-a151-4c77-8c9c-f55d9ac588a4" data-execution_count="12">
+<div id="cell-12" class="cell" data-outputid="f515824d-b99a-4ef6-9dfb-6b925ac80214" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>results_ds_trans <span class="op">=</span> results_df.transpose()</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>results_ds_trans <span class="op">=</span> results_ds_trans.drop(columns<span class="op">=</span>[<span class="st">"dataset"</span>])</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>results_ds_trans.to_csv(<span class="st">"class_results.csv"</span>)</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>results_ds_trans</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="21">
 
-  <div id="df-a7ff6f4e-be38-419c-9e96-f74a03c1df5f" class="colab-df-container">
+  <div id="df-83dfb0da-05e7-4ff7-9910-c16f5d89e119" class="colab-df-container">
     <div>
 
 
@@ -387,7 +387,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-a7ff6f4e-be38-419c-9e96-f74a03c1df5f')" title="Convert this dataframe to an interactive table." style="display:none;">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-83dfb0da-05e7-4ff7-9910-c16f5d89e119')" title="Convert this dataframe to an interactive table." style="display:none;">
 
   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
     <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
@@ -437,12 +437,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
     <script>
       const buttonEl =
-        document.querySelector('#df-a7ff6f4e-be38-419c-9e96-f74a03c1df5f button.colab-df-convert');
+        document.querySelector('#df-83dfb0da-05e7-4ff7-9910-c16f5d89e119 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-a7ff6f4e-be38-419c-9e96-f74a03c1df5f');
+        const element = document.querySelector('#df-83dfb0da-05e7-4ff7-9910-c16f5d89e119');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -462,7 +462,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 
 
-  <div id="id_c645a5a7-11d7-4cb9-b49e-672799e66f3a">
+  <div id="id_bf71b2b7-e4b5-4c75-9818-7da762834aa6">
     <style>
       .colab-df-generate {
         background-color: #E8F0FE;
@@ -503,7 +503,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <script>
       (() => {
       const buttonEl =
-        document.querySelector('#id_c645a5a7-11d7-4cb9-b49e-672799e66f3a button.colab-df-generate');
+        document.querySelector('#id_bf71b2b7-e4b5-4c75-9818-7da762834aa6 button.colab-df-generate');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
