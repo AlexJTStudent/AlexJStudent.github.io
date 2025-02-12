@@ -1,5 +1,135 @@
 [
   {
+    "objectID": "exploration.html",
+    "href": "exploration.html",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Data Exploration"
+    ]
+  },
+  {
+    "objectID": "exploration.html#title-2-header",
+    "href": "exploration.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Data Exploration"
+    ]
+  },
+  {
+    "objectID": "Full_Stack/project2.html",
+    "href": "Full_Stack/project2.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Full Stack",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Full_Stack/project4.html",
+    "href": "Full_Stack/project4.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Full Stack",
+      "Project 4"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Exploration/project5.html",
+    "href": "Cleansing_Exploration/project5.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "Cleansing_Exploration/project1.html",
+    "href": "Cleansing_Exploration/project1.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "Cleansing_Exploration/project3.html",
+    "href": "Cleansing_Exploration/project3.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "story_telling.html",
+    "href": "story_telling.html",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Story Telling"
+    ]
+  },
+  {
+    "objectID": "story_telling.html#title-2-header",
+    "href": "story_telling.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Story Telling"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics"
+  },
+  {
+    "objectID": "index.html#title-2-header",
+    "href": "index.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics"
+  },
+  {
+    "objectID": "Story_Telling/project5.html",
+    "href": "Story_Telling/project5.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Story Telling",
+      "Project 5"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project1.html",
+    "href": "Story_Telling/project1.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Story Telling",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project3.html",
+    "href": "Story_Telling/project3.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Story Telling",
+      "Project 3"
+    ]
+  },
+  {
     "objectID": "competition.html",
     "href": "competition.html",
     "title": "about me",
@@ -17,6 +147,130 @@
     "text": "MarkDown Basics",
     "crumbs": [
       "Competition"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Projects/project2.html",
+    "href": "Cleansing_Projects/project2.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Cleansing",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Projects/project4.html",
+    "href": "Cleansing_Projects/project4.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Cleansing",
+      "Project 4"
+    ]
+  },
+  {
+    "objectID": "Competition/project5.html",
+    "href": "Competition/project5.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Competition",
+      "Project 5"
+    ]
+  },
+  {
+    "objectID": "Competition/project1.html",
+    "href": "Competition/project1.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Competition",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Competition/project3.html",
+    "href": "Competition/project3.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Competition",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "Machine_Learning/project5.html",
+    "href": "Machine_Learning/project5.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Machine Learning",
+      "Project 5"
+    ]
+  },
+  {
+    "objectID": "Machine_Learning/project1.html",
+    "href": "Machine_Learning/project1.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Machine Learning",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Machine_Learning/project3.html",
+    "href": "Machine_Learning/project3.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Machine Learning",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "notebooks/module03_housing_grading_mini.html",
+    "href": "notebooks/module03_housing_grading_mini.html",
+    "title": "Alex Tovar - Data Science Portfolio",
+    "section": "",
+    "text": "Prep work:\n\nDownload team csv predictions file\nRename files to team8-module3-predictions.csv where team8 is the name of your team\nMake sure file is one column and remove any extra columns\nMake sure the heading is set to “price” (without quotes)\nUpload csv predictions to session storage area.\nClick the folder icon, then click the upload icon (paper with an upward arrow)\nRun the notebook (Runtime -&gt; Run all)\n\n\n# MODULE 03 - HOUSING HOLDOUT GRADING\n\nfrom pathlib import Path\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nimport numpy as np\nfrom sklearn.metrics import confusion_matrix\nfrom sklearn.metrics import root_mean_squared_error, mean_squared_error, r2_score, mean_absolute_error, median_absolute_error\n\n# READ IN THE CSV FILES\nteam_dir = Path(\"./\")\nteams = team_dir.glob(\"*-predictions.csv\")\nteam_list = []\nfor team in teams:\n  # print(latent_file)\n  team_list.append((str(team).split(\"-\",1)[0],team))\n\n# print(team_list)\n\n\n# READ IN THE HOLDOUT ANSWERS\ntargets_file = \"https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/housing_holdout_test_mini_answers.csv\"\ntargets = pd.read_csv(targets_file)\n# targets\n\n\n# ARE THE STUDENT DATASETS THE CORRECT LENGTH\nstudent_datasets = {}\nfor (group, file) in team_list:\n  ds = pd.read_csv(file)\n\n  if ds.shape != targets.shape:\n    print(f\"Error group {group} ds had {ds.shape} rows and columns instead of the expected {targets.shape}. It will be excluded.\")\n  else:\n    student_datasets[group] = ds\n    print(f\"Group {group} added successfully\")\n\nGroup team8 added successfully\n\n\n\n# student_datasets\n\n\nresults_dict = {}\n\n\nfor group, student_ds in student_datasets.items():\n  student_dict = {}\n  # print(group,cm)\n  student_ds.columns=['price']\n  mse = root_mean_squared_error(targets, student_ds)\n  # print(\"{} - RMSE: {}\".format(group, mse))\n\n  student_dict[\"RMSE\"] = root_mean_squared_error(targets, student_ds)\n  student_dict[\"Mean Abs Error\"] = mean_absolute_error(targets, student_ds)\n  student_dict[\"Median Abs Error\"] = median_absolute_error(targets, student_ds)\n  student_dict[\"R2\"] = r2_score(targets, student_ds)\n\n  combined = pd.concat([targets, student_ds], axis=1)\n  combined.columns = [\"target\", \"pred\"]\n  combined[\"absdiff\"] = (combined[\"target\"] - combined[\"pred\"]).abs()\n  combined[\"absdiff_pct\"] = combined[\"absdiff\"] / combined[\"target\"]\n\n  shower = pd.DataFrame(student_ds, columns = ['price'])\n  shower.columns = ['predictions']\n  testfinal = pd.concat([shower,targets['price']],axis=1)\n  testfinal['difference'] = testfinal['price']-testfinal['predictions']\n  testfinal['percent_difference'] = abs(testfinal['difference']/testfinal['price'])\n  testfinal['percent_bucket'] = [ \"above 20%\" if i &gt;= 0.2 else \"below 20%\" for i in testfinal.percent_difference ]\n\n  # testfinal\n\n  student_dict['dataset'] = testfinal\n  percents = [5, 10, 20]\n  for percent in percents:\n    student_dict[f\"Percent of houses within {percent} percent\"] = len(combined[combined[\"absdiff_pct\"] &lt;= (percent /100)]) / len(combined) * 100\n\n  results_dict[group] = student_dict\n\n\n# df['predictions']\n\n\n# results_dict\n\n\nresults_df = pd.DataFrame(results_dict)\nresults_ds_trans = results_df.transpose()\nresults_ds_trans = results_ds_trans.drop(columns=[\"dataset\"])\n\nresults_ds_trans = results_ds_trans.round(2)\nresults_ds_trans = results_ds_trans.sort_values(by=\"R2\",ascending=False)\n\n\n# results_df\n\n\nsns.set(rc={'figure.figsize':(11.7,8.27)})\nfor team_results in results_dict.items():\n  testfinal = team_results[1]['dataset']\n  # print(team_results['dataset'])\n  # print(f\"R-Squared Value: {r2}\")\n  print(f\"-------------------------------- {team_results[0].upper()} RESULTS ---------------------------------\\n\")\n  print(f\" Within 5%: {team_results[1]['Percent of houses within 5 percent']}%\\n\",\n  f\"Within 10%: {team_results[1]['Percent of houses within 10 percent']}%\\n\",\n  f\"Within 20%: {team_results[1]['Percent of houses within 20 percent']}%\\n\",\n  f\"R^2: {team_results[1]['R2']}%\\n\",\n  f\"RMSE: {team_results[1]['RMSE']}\\n\",\n  f\"Mean Absolute Error: {team_results[1]['Mean Abs Error']}\\n\",\n  f\"Median Aboslute Error: {team_results[1]['Median Abs Error']}\")\n\n\n  color_dict = dict({'below 20%':'tab:blue',\n                    'above 20%': 'tab:orange'})\n  # print(testfinal['abspercentmiss'].describe(percentiles=[.1,.2,.3,.4,.5,.6,.7,.8,.9,.95]))\n  xlims=(0,4e6)\n  ylims=(0,4e6)\n  ax = sns.scatterplot(data=testfinal,x='price',y='predictions',hue=\"percent_bucket\",palette=color_dict)\n  # ax.set(xscale=\"log\", yscale=\"log\", xlim=xlims, ylim=ylims)\n  ax.plot(xlims,xlims, color='r')\n  # plt.legend(labels=['perfect',\"below 5\",'above 5','10-20%','above 20'])\n  plt.show()\n  print(f\"-\"*77)\n  print(\"\\n\"*3)\n\n-------------------------------- TEAM8 RESULTS ---------------------------------\n\n Within 5%: 30.864197530864196%\n Within 10%: 51.85185185185185%\n Within 20%: 82.71604938271605%\n R^2: 0.9069012577580781%\n RMSE: 87216.81001856703\n Mean Absolute Error: 57536.72839506173\n Median Aboslute Error: 38663.0\n\n\n\n\n\n\n\n\n\n-----------------------------------------------------------------------------\n\n\n\n\n\n\n\nresults_ds_trans = results_df.transpose()\n\nresults_ds_trans = results_ds_trans.drop(columns=[\"dataset\"])\nresults_ds_trans.to_csv(\"class_results.csv\")\nresults_ds_trans\n\n\n  \n    \n\n\n\n\n\n\nRMSE\nMean Abs Error\nMedian Abs Error\nR2\nPercent of houses within 5 percent\nPercent of houses within 10 percent\nPercent of houses within 20 percent\n\n\n\n\nteam8\n87216.810019\n57536.728395\n38663.0\n0.906901\n30.864198\n51.851852\n82.716049\n\n\n\n\n\n    \n\n  \n    \n\n  \n    \n  \n    \n\n  \n\n    \n  \n\n\n  \n    \n    \n\n  \n    \n  \n    \n    \n  \n\n    \n  \n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "notebooks/starter_housing.html",
+    "href": "notebooks/starter_housing.html",
+    "title": "Alex Tovar - Data Science Portfolio",
+    "section": "",
+    "text": "!pip install scikit-learn==1.5.2\n\nCollecting scikit-learn==1.5.2\n  Downloading scikit_learn-1.5.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (13 kB)\nRequirement already satisfied: numpy&gt;=1.19.5 in /usr/local/lib/python3.11/dist-packages (from scikit-learn==1.5.2) (1.26.4)\nRequirement already satisfied: scipy&gt;=1.6.0 in /usr/local/lib/python3.11/dist-packages (from scikit-learn==1.5.2) (1.13.1)\nRequirement already satisfied: joblib&gt;=1.2.0 in /usr/local/lib/python3.11/dist-packages (from scikit-learn==1.5.2) (1.4.2)\nRequirement already satisfied: threadpoolctl&gt;=3.1.0 in /usr/local/lib/python3.11/dist-packages (from scikit-learn==1.5.2) (3.5.0)\nDownloading scikit_learn-1.5.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.3 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.3/13.3 MB 53.0 MB/s eta 0:00:00\nInstalling collected packages: scikit-learn\n  Attempting uninstall: scikit-learn\n    Found existing installation: scikit-learn 1.6.1\n    Uninstalling scikit-learn-1.6.1:\n      Successfully uninstalled scikit-learn-1.6.1\nSuccessfully installed scikit-learn-1.5.2\n\n\n\nimport pandas as pd\n\ndata = pd.read_csv('https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/housing.csv')\n\n\n# Extract 'year_sold' from the 'date' column and drop the original 'date' column\ndata['year_sold'] = data['date'].str[:4].astype(int)\ndata = data.drop(columns=['date'])\n\n# Select only the 7 most relevant features\nselected_features = ['sqft_living', 'bedrooms', 'bathrooms', 'grade', 'condition', 'yr_built', 'zipcode']\n\nimport pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.preprocessing import LabelEncoder\nimport xgboost as xgb\n\n# Load dataset (replace with actual filename)\ndata = pd.read_csv('https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/housing.csv')\n# Drop the 'id' column as it is not a useful feature\ndata = data.drop(columns=['id'])\n\nX = data.drop(columns=['price'])\n\n# X = data[selected_features]  # Features\ny = data['price']  # Target\n\n# Encode 'zipcode' as it is categorical\n# if 'zipcode' in X.columns:\n#     le = LabelEncoder()\n#     X.loc[:, 'zipcode'] = LabelEncoder().fit_transform(X['zipcode'])\n\n# Split the dataset into training (80%) and test (20%) sets\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n# Train the XGBoost model\nxgb_model = xgb.XGBRegressor(\n    objective='reg:squarederror',\n    n_estimators=500,\n    learning_rate=0.05,\n    max_depth=6,\n    subsample=0.8,\n    colsample_bytree=0.8,\n    random_state=42\n)\n\nxgb_model.fit(X_train, y_train)\n\n# Compute R^2 scores for training and test sets\ntrain_score = xgb_model.score(X_train, y_train)\ntest_score = xgb_model.score(X_test, y_test)\n\nprint(f\"Train Score: {train_score:.4f}\")\nprint(f\"Test Score: {test_score:.4f}\")\n\n\n---------------------------------------------------------------------------\nKeyError                                  Traceback (most recent call last)\n/usr/local/lib/python3.11/dist-packages/pandas/core/indexes/base.py in get_loc(self, key)\n   3804         try:\n-&gt; 3805             return self._engine.get_loc(casted_key)\n   3806         except KeyError as err:\n\nindex.pyx in pandas._libs.index.IndexEngine.get_loc()\n\nindex.pyx in pandas._libs.index.IndexEngine.get_loc()\n\npandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()\n\npandas/_libs/hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()\n\nKeyError: 'date'\n\nThe above exception was the direct cause of the following exception:\n\nKeyError                                  Traceback (most recent call last)\n&lt;ipython-input-7-5ecdfdf7d209&gt; in &lt;cell line: 0&gt;()\n      1 # Extract 'year_sold' from the 'date' column and drop the original 'date' column\n----&gt; 2 data['year_sold'] = data['date'].str[:4].astype(int)\n      3 data = data.drop(columns=['date'])\n      4 \n      5 # Select only the 7 most relevant features\n\n/usr/local/lib/python3.11/dist-packages/pandas/core/frame.py in __getitem__(self, key)\n   4100             if self.columns.nlevels &gt; 1:\n   4101                 return self._getitem_multilevel(key)\n-&gt; 4102             indexer = self.columns.get_loc(key)\n   4103             if is_integer(indexer):\n   4104                 indexer = [indexer]\n\n/usr/local/lib/python3.11/dist-packages/pandas/core/indexes/base.py in get_loc(self, key)\n   3810             ):\n   3811                 raise InvalidIndexError(key)\n-&gt; 3812             raise KeyError(key) from err\n   3813         except TypeError:\n   3814             # If we have a listlike key, _check_indexing_error will raise\n\nKeyError: 'date'\n\n\n\n\nimport pandas as pd\nfrom sklearn.model_selection import train_test_split, GridSearchCV\nfrom sklearn.preprocessing import StandardScaler, OneHotEncoder\nfrom sklearn.compose import ColumnTransformer\nfrom sklearn.pipeline import Pipeline\nimport xgboost as xgb\n\n# Load dataset\ndata = pd.read_csv('https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/housing.csv')\n\n# Feature Engineering\ndata['year_sold'] = data['date'].str[:4].astype(int)\ndata['house_age'] = data['year_sold'] - data['yr_built']\ndata = data.drop(columns=['id', 'date'])\n\n# Separate features and target\nX = data.drop(columns=['price'])\ny = data['price']\n\n# Define categorical and numerical features\ncategorical_features = ['zipcode']\nnumerical_features = X.select_dtypes(include=['number']).columns.tolist()\n\n# Create transformers for numerical and categorical features\nnumerical_transformer = Pipeline(steps=[\n    ('scaler', StandardScaler())\n])\ncategorical_transformer = Pipeline(steps=[\n    ('onehot', OneHotEncoder(handle_unknown='ignore', sparse_output=False))\n])\n\n# Combine transformers using ColumnTransformer\npreprocessor = ColumnTransformer(\n    transformers=[\n        ('num', numerical_transformer, numerical_features),\n        ('cat', categorical_transformer, categorical_features)\n    ])\n\n# Create pipeline with preprocessor and XGBoost model\npipeline = Pipeline(steps=[\n    ('preprocessor', preprocessor),\n    ('regressor', xgb.XGBRegressor(objective='reg:squarederror', random_state=42))\n])\n\n# Define hyperparameter grid for tuning\nparam_grid = {\n    'regressor__n_estimators': [100, 200, 300],\n    'regressor__learning_rate': [0.01, 0.05, 0.1],\n    'regressor__max_depth': [3, 4, 5]\n}\n\n# Perform GridSearchCV for hyperparameter tuning\ngrid_search = GridSearchCV(pipeline, param_grid, cv=5, scoring='r2')\ngrid_search.fit(X, y)\n\n# Print best parameters and score\nprint(\"Best parameters:\", grid_search.best_params_)\nprint(\"Best score:\", grid_search.best_score_)\n\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.\n  warnings.warn(\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.\n  \n\n\n\n---------------------------------------------------------------------------\nKeyboardInterrupt                         Traceback (most recent call last)\n&lt;ipython-input-6-743b45a2d52c&gt; in &lt;cell line: 0&gt;()\n     52 # Perform GridSearchCV for hyperparameter tuning\n     53 grid_search = GridSearchCV(pipeline, param_grid, cv=5, scoring='r2')\n---&gt; 54 grid_search.fit(X, y)\n     55 \n     56 # Print best parameters and score\n\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py in wrapper(estimator, *args, **kwargs)\n   1387 \n   1388 def is_regressor(estimator):\n-&gt; 1389     \"\"\"Return True if the given estimator is (probably) a regressor.\n   1390 \n   1391     Parameters\n\n/usr/local/lib/python3.11/dist-packages/sklearn/model_selection/_search.py in fit(self, X, y, **params)\n   1022             # self.scoring the return type is only known after calling\n   1023             first_test_score = all_out[0][\"test_scores\"]\n-&gt; 1024             self.multimetric_ = isinstance(first_test_score, dict)\n   1025 \n   1026             # check refit_metric now for a callabe scorer that is multimetric\n\n/usr/local/lib/python3.11/dist-packages/sklearn/model_selection/_search.py in _run_search(self, evaluate_candidates)\n   1569         self.param_grid = param_grid\n   1570 \n-&gt; 1571     def _run_search(self, evaluate_candidates):\n   1572         \"\"\"Search all candidates in param_grid\"\"\"\n   1573         evaluate_candidates(ParameterGrid(self.param_grid))\n\n/usr/local/lib/python3.11/dist-packages/sklearn/model_selection/_search.py in evaluate_candidates(candidate_params, cv, more_results)\n    968                         X,\n    969                         y,\n--&gt; 970                         train=train,\n    971                         test=test,\n    972                         parameters=parameters,\n\n/usr/local/lib/python3.11/dist-packages/sklearn/utils/parallel.py in __call__(self, iterable)\n     75 \n     76 \n---&gt; 77 # remove when https://github.com/joblib/joblib/issues/1071 is fixed\n     78 def delayed(function):\n     79     \"\"\"Decorator used to capture the arguments of a function.\n\n/usr/local/lib/python3.11/dist-packages/joblib/parallel.py in __call__(self, iterable)\n   1916             output = self._get_sequential_output(iterable)\n   1917             next(output)\n-&gt; 1918             return output if self.return_generator else list(output)\n   1919 \n   1920         # Let's create an ID that uniquely identifies the current call. If the\n\n/usr/local/lib/python3.11/dist-packages/joblib/parallel.py in _get_sequential_output(self, iterable)\n   1845                 self.n_dispatched_batches += 1\n   1846                 self.n_dispatched_tasks += 1\n-&gt; 1847                 res = func(*args, **kwargs)\n   1848                 self.n_completed_tasks += 1\n   1849                 self.print_progress()\n\n/usr/local/lib/python3.11/dist-packages/sklearn/utils/parallel.py in __call__(self, *args, **kwargs)\n    137 \n    138 \n--&gt; 139 def _get_threadpool_controller():\n    140     \"\"\"Return the global threadpool controller instance.\"\"\"\n    141     global _threadpool_controller\n\n/usr/local/lib/python3.11/dist-packages/sklearn/model_selection/_validation.py in _fit_and_score(estimator, X, y, scorer, train, test, verbose, parameters, fit_params, score_params, return_train_score, return_parameters, return_n_test_samples, return_times, return_estimator, split_progress, candidate_progress, error_score)\n    864     # Adjust length of sample weights\n    865     fit_params = fit_params if fit_params is not None else {}\n--&gt; 866     fit_params = _check_method_params(X, params=fit_params, indices=train)\n    867     score_params = score_params if score_params is not None else {}\n    868     score_params_train = _check_method_params(X, params=score_params, indices=train)\n\n/usr/local/lib/python3.11/dist-packages/sklearn/base.py in wrapper(estimator, *args, **kwargs)\n   1387 \n   1388 def is_regressor(estimator):\n-&gt; 1389     \"\"\"Return True if the given estimator is (probably) a regressor.\n   1390 \n   1391     Parameters\n\n/usr/local/lib/python3.11/dist-packages/sklearn/pipeline.py in fit(self, X, y, **params)\n    471             if self._final_estimator != \"passthrough\":\n    472                 last_step_params = routed_params[self.steps[-1][0]]\n--&gt; 473                 self._final_estimator.fit(Xt, y, **last_step_params[\"fit\"])\n    474 \n    475         return self\n\n/usr/local/lib/python3.11/dist-packages/xgboost/core.py in inner_f(*args, **kwargs)\n    724             for k, arg in zip(sig.parameters, args):\n    725                 kwargs[k] = arg\n--&gt; 726             return func(**kwargs)\n    727 \n    728         return inner_f\n\n/usr/local/lib/python3.11/dist-packages/xgboost/sklearn.py in fit(self, X, y, sample_weight, base_margin, eval_set, verbose, xgb_model, sample_weight_eval_set, base_margin_eval_set, feature_weights)\n   1106 \n   1107             model, metric, params = self._configure_fit(xgb_model, params)\n-&gt; 1108             self._Booster = train(\n   1109                 params,\n   1110                 train_dmatrix,\n\n/usr/local/lib/python3.11/dist-packages/xgboost/core.py in inner_f(*args, **kwargs)\n    724             for k, arg in zip(sig.parameters, args):\n    725                 kwargs[k] = arg\n--&gt; 726             return func(**kwargs)\n    727 \n    728         return inner_f\n\n/usr/local/lib/python3.11/dist-packages/xgboost/training.py in train(params, dtrain, num_boost_round, evals, obj, feval, maximize, early_stopping_rounds, evals_result, verbose_eval, xgb_model, callbacks, custom_metric)\n    179         if cb_container.before_iteration(bst, i, dtrain, evals):\n    180             break\n--&gt; 181         bst.update(dtrain, iteration=i, fobj=obj)\n    182         if cb_container.after_iteration(bst, i, dtrain, evals):\n    183             break\n\n/usr/local/lib/python3.11/dist-packages/xgboost/core.py in update(self, dtrain, iteration, fobj)\n   2099         if fobj is None:\n   2100             _check_call(\n-&gt; 2101                 _LIB.XGBoosterUpdateOneIter(\n   2102                     self.handle, ctypes.c_int(iteration), dtrain.handle\n   2103                 )\n\nKeyboardInterrupt: \n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "Machine_Learning/project4.html",
+    "href": "Machine_Learning/project4.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Machine Learning",
+      "Project 4"
+    ]
+  },
+  {
+    "objectID": "Machine_Learning/project2.html",
+    "href": "Machine_Learning/project2.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Machine Learning",
+      "Project 2"
     ]
   },
   {
@@ -69,60 +323,15 @@
     "text": "Extracurriculars\n\nData Science Society Projects\nTo gain experience in a simulated and collaborative environment, contributing to the “Blood Test” project designed to provide incoming freshman experience and familiarity with data science practices and tools. Through this project, participants will become familiar with data visualization, grouping and aggregating data, discovering trends or patterns, and identifying outliers.\n\n\nIndependent Programmer (Python, R, SQL, Matplotlib,\nNumPy, Pandas, Spark) Independently contributing to projects and repositories on GitHub to build analytical and problem-solving skills outside of the classroom environment. This allows me to diversify in practical programming languages to collaborate on more projects in the future."
   },
   {
-    "objectID": "cleansing.html",
-    "href": "cleansing.html",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Data Cleansing"
-    ]
-  },
-  {
-    "objectID": "cleansing.html#title-2-header",
-    "href": "cleansing.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Data Cleansing"
-    ]
-  },
-  {
-    "objectID": "Cleansing_Projects/project2.html",
-    "href": "Cleansing_Projects/project2.html",
+    "objectID": "Competition/project4.html",
+    "href": "Competition/project4.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
     "text": "Paste in a template\n\n\n\n\n Back to top",
     "crumbs": [
-      "Data Cleansing",
-      "Project 2"
-    ]
-  },
-  {
-    "objectID": "Cleansing_Projects/project4.html",
-    "href": "Cleansing_Projects/project4.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Data Cleansing",
+      "Competition",
       "Project 4"
     ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics"
-  },
-  {
-    "objectID": "index.html#title-2-header",
-    "href": "index.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics"
   },
   {
     "objectID": "Competition/project2.html",
@@ -136,313 +345,13 @@
     ]
   },
   {
-    "objectID": "Competition/project4.html",
-    "href": "Competition/project4.html",
+    "objectID": "Cleansing_Projects/project3.html",
+    "href": "Cleansing_Projects/project3.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
     "text": "Paste in a template\n\n\n\n\n Back to top",
     "crumbs": [
-      "Competition",
-      "Project 4"
-    ]
-  },
-  {
-    "objectID": "Machine_Learning/project3.html",
-    "href": "Machine_Learning/project3.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Machine Learning",
-      "Project 3"
-    ]
-  },
-  {
-    "objectID": "Machine_Learning/project5.html",
-    "href": "Machine_Learning/project5.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Machine Learning",
-      "Project 5"
-    ]
-  },
-  {
-    "objectID": "Machine_Learning/project1.html",
-    "href": "Machine_Learning/project1.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Machine Learning",
-      "Project 1"
-    ]
-  },
-  {
-    "objectID": "Story_Telling/project2.html",
-    "href": "Story_Telling/project2.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Story Telling",
-      "Project 2"
-    ]
-  },
-  {
-    "objectID": "Story_Telling/project4.html",
-    "href": "Story_Telling/project4.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Story Telling",
-      "Project 4"
-    ]
-  },
-  {
-    "objectID": "Untitled0.html",
-    "href": "Untitled0.html",
-    "title": "Alex Tovar - Data Science Portfolio",
-    "section": "",
-    "text": "# Import Libraries -------------------------------------------------------------\nimport pandas as pd\nfrom plotnine import ggplot, aes, geom_bar, labs, theme_minimal, facet_wrap\n\nhello!!\n\n# Reading Data -----------------------------------------------------------------\nnetflix = pd.read_csv('https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/netflix_titles.csv')\n\n\n# Movies -----------------------------------------------------------------------\nmovies = netflix[ netflix['type'] == 'Movie']\n# movies.head()\n\nratings = ['G', 'PG', 'PG-13', 'R', 'NC-17']\nmovies2 = movies[ movies['rating'].isin(ratings) ]\nmovies2['rating'].value_counts()\n\nggplot(movies2, aes(x='rating')) + \\\n    geom_bar(fill='skyblue') + \\\n    labs(title='Movie Ratings Distribution', x='Rating', y='Count') + \\\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n# Tv Shows ---------------------------------------------------------------------\ntvshows = netflix[ netflix['type'] == 'TV Show']\n# tvshows.head()\n\ntvratings = ['TV-Y', 'TV-Y7', 'TV-G']\nshows2 = tvshows[ tvshows['rating'].isin(tvratings) ]\nshows2['rating'].value_counts()\n\nggplot(shows2, aes(x='rating')) + \\\n    geom_bar(fill='skyblue') + \\\n    labs(title='Movie Ratings Distribution', x='Rating', y='Count') + \\\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "Full_Stack/project2.html",
-    "href": "Full_Stack/project2.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Full Stack",
-      "Project 2"
-    ]
-  },
-  {
-    "objectID": "Full_Stack/project4.html",
-    "href": "Full_Stack/project4.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Full Stack",
-      "Project 4"
-    ]
-  },
-  {
-    "objectID": "story_telling.html",
-    "href": "story_telling.html",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Story Telling"
-    ]
-  },
-  {
-    "objectID": "story_telling.html#title-2-header",
-    "href": "story_telling.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Story Telling"
-    ]
-  },
-  {
-    "objectID": "Cleansing_Exploration/project3.html",
-    "href": "Cleansing_Exploration/project3.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "Cleansing_Exploration/project5.html",
-    "href": "Cleansing_Exploration/project5.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "Cleansing_Exploration/project1.html",
-    "href": "Cleansing_Exploration/project1.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "exploration.html",
-    "href": "exploration.html",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Data Exploration"
-    ]
-  },
-  {
-    "objectID": "exploration.html#title-2-header",
-    "href": "exploration.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Data Exploration"
-    ]
-  },
-  {
-    "objectID": "Cleansing_Exploration/project4.html",
-    "href": "Cleansing_Exploration/project4.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "Cleansing_Exploration/project2.html",
-    "href": "Cleansing_Exploration/project2.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "full_stack.html",
-    "href": "full_stack.html",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Full Stack"
-    ]
-  },
-  {
-    "objectID": "full_stack.html#title-2-header",
-    "href": "full_stack.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Full Stack"
-    ]
-  },
-  {
-    "objectID": "Full_Stack/project1.html",
-    "href": "Full_Stack/project1.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Full Stack",
-      "Project 1"
-    ]
-  },
-  {
-    "objectID": "Full_Stack/project5.html",
-    "href": "Full_Stack/project5.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Full Stack",
-      "Project 5"
-    ]
-  },
-  {
-    "objectID": "Full_Stack/project3.html",
-    "href": "Full_Stack/project3.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Full Stack",
-      "Project 3"
-    ]
-  },
-  {
-    "objectID": "Story_Telling/project1.html",
-    "href": "Story_Telling/project1.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Story Telling",
-      "Project 1"
-    ]
-  },
-  {
-    "objectID": "Story_Telling/project5.html",
-    "href": "Story_Telling/project5.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Story Telling",
-      "Project 5"
-    ]
-  },
-  {
-    "objectID": "Story_Telling/project3.html",
-    "href": "Story_Telling/project3.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Story Telling",
-      "Project 3"
-    ]
-  },
-  {
-    "objectID": "Machine_Learning/project4.html",
-    "href": "Machine_Learning/project4.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Machine Learning",
-      "Project 4"
-    ]
-  },
-  {
-    "objectID": "Machine_Learning/project2.html",
-    "href": "Machine_Learning/project2.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Machine Learning",
-      "Project 2"
-    ]
-  },
-  {
-    "objectID": "Competition/project1.html",
-    "href": "Competition/project1.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Competition",
-      "Project 1"
-    ]
-  },
-  {
-    "objectID": "Competition/project5.html",
-    "href": "Competition/project5.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Competition",
-      "Project 5"
-    ]
-  },
-  {
-    "objectID": "Competition/project3.html",
-    "href": "Competition/project3.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Competition",
+      "Data Cleansing",
       "Project 3"
     ]
   },
@@ -469,22 +378,73 @@
     ]
   },
   {
-    "objectID": "Cleansing_Projects/project3.html",
-    "href": "Cleansing_Projects/project3.html",
+    "objectID": "cleansing.html",
+    "href": "cleansing.html",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Data Cleansing"
+    ]
+  },
+  {
+    "objectID": "cleansing.html#title-2-header",
+    "href": "cleansing.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Data Cleansing"
+    ]
+  },
+  {
+    "objectID": "Story_Telling/project4.html",
+    "href": "Story_Telling/project4.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
     "text": "Paste in a template\n\n\n\n\n Back to top",
     "crumbs": [
-      "Data Cleansing",
-      "Project 3"
+      "Story Telling",
+      "Project 4"
     ]
   },
   {
-    "objectID": "notebooks/module03_housing_grading_mini.html",
-    "href": "notebooks/module03_housing_grading_mini.html",
+    "objectID": "Story_Telling/project2.html",
+    "href": "Story_Telling/project2.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Story Telling",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "full_stack.html",
+    "href": "full_stack.html",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Full Stack"
+    ]
+  },
+  {
+    "objectID": "full_stack.html#title-2-header",
+    "href": "full_stack.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Full Stack"
+    ]
+  },
+  {
+    "objectID": "Untitled0.html",
+    "href": "Untitled0.html",
     "title": "Alex Tovar - Data Science Portfolio",
     "section": "",
-    "text": "Prep work:\n\nDownload team csv predictions file\nRename files to team8-module3-predictions.csv where team8 is the name of your team\nMake sure file is one column and remove any extra columns\nMake sure the heading is set to “price” (without quotes)\nUpload csv predictions to session storage area.\nClick the folder icon, then click the upload icon (paper with an upward arrow)\nRun the notebook (Runtime -&gt; Run all)\n\n\n# MODULE 03 - HOUSING HOLDOUT GRADING\n\nfrom pathlib import Path\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nimport numpy as np\nfrom sklearn.metrics import confusion_matrix\nfrom sklearn.metrics import root_mean_squared_error, mean_squared_error, r2_score, mean_absolute_error, median_absolute_error\n\n# READ IN THE CSV FILES\nteam_dir = Path(\"./\")\nteams = team_dir.glob(\"*-predictions.csv\")\nteam_list = []\nfor team in teams:\n  # print(latent_file)\n  team_list.append((str(team).split(\"-\",1)[0],team))\n\n# print(team_list)\n\n\n# READ IN THE HOLDOUT ANSWERS\ntargets_file = \"https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/housing_holdout_test_mini_answers.csv\"\ntargets = pd.read_csv(targets_file)\n# targets\n\n\n# ARE THE STUDENT DATASETS THE CORRECT LENGTH\nstudent_datasets = {}\nfor (group, file) in team_list:\n  ds = pd.read_csv(file)\n\n  if ds.shape != targets.shape:\n    print(f\"Error group {group} ds had {ds.shape} rows and columns instead of the expected {targets.shape}. It will be excluded.\")\n  else:\n    student_datasets[group] = ds\n    print(f\"Group {group} added successfully\")\n\nGroup team8 added successfully\n\n\n\n# student_datasets\n\n\nresults_dict = {}\n\n\nfor group, student_ds in student_datasets.items():\n  student_dict = {}\n  # print(group,cm)\n  student_ds.columns=['price']\n  mse = root_mean_squared_error(targets, student_ds)\n  # print(\"{} - RMSE: {}\".format(group, mse))\n\n  student_dict[\"RMSE\"] = root_mean_squared_error(targets, student_ds)\n  student_dict[\"Mean Abs Error\"] = mean_absolute_error(targets, student_ds)\n  student_dict[\"Median Abs Error\"] = median_absolute_error(targets, student_ds)\n  student_dict[\"R2\"] = r2_score(targets, student_ds)\n\n  combined = pd.concat([targets, student_ds], axis=1)\n  combined.columns = [\"target\", \"pred\"]\n  combined[\"absdiff\"] = (combined[\"target\"] - combined[\"pred\"]).abs()\n  combined[\"absdiff_pct\"] = combined[\"absdiff\"] / combined[\"target\"]\n\n  shower = pd.DataFrame(student_ds, columns = ['price'])\n  shower.columns = ['predictions']\n  testfinal = pd.concat([shower,targets['price']],axis=1)\n  testfinal['difference'] = testfinal['price']-testfinal['predictions']\n  testfinal['percent_difference'] = abs(testfinal['difference']/testfinal['price'])\n  testfinal['percent_bucket'] = [ \"above 20%\" if i &gt;= 0.2 else \"below 20%\" for i in testfinal.percent_difference ]\n\n  # testfinal\n\n  student_dict['dataset'] = testfinal\n  percents = [5, 10, 20]\n  for percent in percents:\n    student_dict[f\"Percent of houses within {percent} percent\"] = len(combined[combined[\"absdiff_pct\"] &lt;= (percent /100)]) / len(combined) * 100\n\n  results_dict[group] = student_dict\n\n\n# df['predictions']\n\n\n# results_dict\n\n\nresults_df = pd.DataFrame(results_dict)\nresults_ds_trans = results_df.transpose()\nresults_ds_trans = results_ds_trans.drop(columns=[\"dataset\"])\n\nresults_ds_trans = results_ds_trans.round(2)\nresults_ds_trans = results_ds_trans.sort_values(by=\"R2\",ascending=False)\n\n\n# results_df\n\n\nsns.set(rc={'figure.figsize':(11.7,8.27)})\nfor team_results in results_dict.items():\n  testfinal = team_results[1]['dataset']\n  # print(team_results['dataset'])\n  # print(f\"R-Squared Value: {r2}\")\n  print(f\"-------------------------------- {team_results[0].upper()} RESULTS ---------------------------------\\n\")\n  print(f\" Within 5%: {team_results[1]['Percent of houses within 5 percent']}%\\n\",\n  f\"Within 10%: {team_results[1]['Percent of houses within 10 percent']}%\\n\",\n  f\"Within 20%: {team_results[1]['Percent of houses within 20 percent']}%\\n\",\n  f\"R^2: {team_results[1]['R2']}%\\n\",\n  f\"RMSE: {team_results[1]['RMSE']}\\n\",\n  f\"Mean Absolute Error: {team_results[1]['Mean Abs Error']}\\n\",\n  f\"Median Aboslute Error: {team_results[1]['Median Abs Error']}\")\n\n\n  color_dict = dict({'below 20%':'tab:blue',\n                    'above 20%': 'tab:orange'})\n  # print(testfinal['abspercentmiss'].describe(percentiles=[.1,.2,.3,.4,.5,.6,.7,.8,.9,.95]))\n  xlims=(0,4e6)\n  ylims=(0,4e6)\n  ax = sns.scatterplot(data=testfinal,x='price',y='predictions',hue=\"percent_bucket\",palette=color_dict)\n  # ax.set(xscale=\"log\", yscale=\"log\", xlim=xlims, ylim=ylims)\n  ax.plot(xlims,xlims, color='r')\n  # plt.legend(labels=['perfect',\"below 5\",'above 5','10-20%','above 20'])\n  plt.show()\n  print(f\"-\"*77)\n  print(\"\\n\"*3)\n\n-------------------------------- TEAM8 RESULTS ---------------------------------\n\n Within 5%: 30.864197530864196%\n Within 10%: 51.85185185185185%\n Within 20%: 82.71604938271605%\n R^2: 0.9069012577580781%\n RMSE: 87216.81001856703\n Mean Absolute Error: 57536.72839506173\n Median Aboslute Error: 38663.0\n\n\n\n\n\n\n\n\n\n-----------------------------------------------------------------------------\n\n\n\n\n\n\n\nresults_ds_trans = results_df.transpose()\n\nresults_ds_trans = results_ds_trans.drop(columns=[\"dataset\"])\nresults_ds_trans.to_csv(\"class_results.csv\")\nresults_ds_trans\n\n\n  \n    \n\n\n\n\n\n\nRMSE\nMean Abs Error\nMedian Abs Error\nR2\nPercent of houses within 5 percent\nPercent of houses within 10 percent\nPercent of houses within 20 percent\n\n\n\n\nteam8\n87216.810019\n57536.728395\n38663.0\n0.906901\n30.864198\n51.851852\n82.716049\n\n\n\n\n\n    \n\n  \n    \n\n  \n    \n  \n    \n\n  \n\n    \n  \n\n\n  \n    \n    \n\n  \n    \n  \n    \n    \n  \n\n    \n  \n\n\n\n\n\n Back to top"
+    "text": "# Import Libraries -------------------------------------------------------------\nimport pandas as pd\nfrom plotnine import ggplot, aes, geom_bar, labs, theme_minimal, facet_wrap\n\nhello!!\n\n# Reading Data -----------------------------------------------------------------\nnetflix = pd.read_csv('https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/netflix_titles.csv')\n\n\n# Movies -----------------------------------------------------------------------\nmovies = netflix[ netflix['type'] == 'Movie']\n# movies.head()\n\nratings = ['G', 'PG', 'PG-13', 'R', 'NC-17']\nmovies2 = movies[ movies['rating'].isin(ratings) ]\nmovies2['rating'].value_counts()\n\nggplot(movies2, aes(x='rating')) + \\\n    geom_bar(fill='skyblue') + \\\n    labs(title='Movie Ratings Distribution', x='Rating', y='Count') + \\\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n# Tv Shows ---------------------------------------------------------------------\ntvshows = netflix[ netflix['type'] == 'TV Show']\n# tvshows.head()\n\ntvratings = ['TV-Y', 'TV-Y7', 'TV-G']\nshows2 = tvshows[ tvshows['rating'].isin(tvratings) ]\nshows2['rating'].value_counts()\n\nggplot(shows2, aes(x='rating')) + \\\n    geom_bar(fill='skyblue') + \\\n    labs(title='Movie Ratings Distribution', x='Rating', y='Count') + \\\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "ml.html",
@@ -504,6 +464,53 @@
     "text": "MarkDown Basics",
     "crumbs": [
       "Machine Learning"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Exploration/project4.html",
+    "href": "Cleansing_Exploration/project4.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "Cleansing_Exploration/project2.html",
+    "href": "Cleansing_Exploration/project2.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "Full_Stack/project3.html",
+    "href": "Full_Stack/project3.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Full Stack",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "Full_Stack/project1.html",
+    "href": "Full_Stack/project1.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Full Stack",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Full_Stack/project5.html",
+    "href": "Full_Stack/project5.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Full Stack",
+      "Project 5"
     ]
   }
 ]
