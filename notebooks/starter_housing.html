@@ -178,49 +178,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div id="cell-0" class="cell" data-outputid="2b3ba24d-1aa4-409a-c172-476f45fe2100" data-execution_count="3">
+<div id="cell-0" class="cell" data-outputid="9b618548-94f7-4003-eb6e-5f8e0c9a6d18" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install scikit<span class="op">-</span>learn<span class="op">==</span><span class="fl">1.5.2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Collecting scikit-learn==1.5.2
-  Downloading scikit_learn-1.5.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (13 kB)
+<pre><code>Requirement already satisfied: scikit-learn==1.5.2 in /usr/local/lib/python3.11/dist-packages (1.5.2)
 Requirement already satisfied: numpy&gt;=1.19.5 in /usr/local/lib/python3.11/dist-packages (from scikit-learn==1.5.2) (1.26.4)
 Requirement already satisfied: scipy&gt;=1.6.0 in /usr/local/lib/python3.11/dist-packages (from scikit-learn==1.5.2) (1.13.1)
 Requirement already satisfied: joblib&gt;=1.2.0 in /usr/local/lib/python3.11/dist-packages (from scikit-learn==1.5.2) (1.4.2)
-Requirement already satisfied: threadpoolctl&gt;=3.1.0 in /usr/local/lib/python3.11/dist-packages (from scikit-learn==1.5.2) (3.5.0)
-Downloading scikit_learn-1.5.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.3 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.3/13.3 MB 53.0 MB/s eta 0:00:00
-Installing collected packages: scikit-learn
-  Attempting uninstall: scikit-learn
-    Found existing installation: scikit-learn 1.6.1
-    Uninstalling scikit-learn-1.6.1:
-      Successfully uninstalled scikit-learn-1.6.1
-Successfully installed scikit-learn-1.5.2</code></pre>
+Requirement already satisfied: threadpoolctl&gt;=3.1.0 in /usr/local/lib/python3.11/dist-packages (from scikit-learn==1.5.2) (3.5.0)</code></pre>
 </div>
 </div>
-<div id="cell-1" class="cell" data-execution_count="4">
+<div id="cell-1" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/housing.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>housing <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/housing.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-2" class="cell" data-outputid="e511e551-2bb9-412f-c031-1bfe2cda0af7" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract 'year_sold' from the 'date' column and drop the original 'date' column</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'year_sold'</span>] <span class="op">=</span> data[<span class="st">'date'</span>].<span class="bu">str</span>[:<span class="dv">4</span>].astype(<span class="bu">int</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.drop(columns<span class="op">=</span>[<span class="st">'date'</span>])</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Select only the 7 most relevant features</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>selected_features <span class="op">=</span> [<span class="st">'sqft_living'</span>, <span class="st">'bedrooms'</span>, <span class="st">'bathrooms'</span>, <span class="st">'grade'</span>, <span class="st">'condition'</span>, <span class="st">'yr_built'</span>, <span class="st">'zipcode'</span>]</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xgboost <span class="im">as</span> xgb</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Load dataset (replace with actual filename)</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/housing.csv'</span>)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop the 'id' column as it is not a useful feature</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.drop(columns<span class="op">=</span>[<span class="st">'id'</span>])</span>
+<div id="cell-2" class="cell" data-outputid="7da296e2-7fab-490b-8445-256f0edd20bc" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xgboost <span class="im">as</span> xgb</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Load dataset (replace with actual filename)</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/housing.csv'</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop the 'id' column as it is not a useful feature</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.drop(columns<span class="op">=</span>[<span class="st">'id'</span>])</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract 'year_sold' from the 'date' column and drop the original 'date' column</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'year_sold'</span>] <span class="op">=</span> data[<span class="st">'date'</span>].<span class="bu">str</span>[:<span class="dv">4</span>].astype(<span class="bu">int</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.drop(columns<span class="op">=</span>[<span class="st">'date'</span>])</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Select only the 7 most relevant features</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>selected_features <span class="op">=</span> [<span class="st">'sqft_living'</span>, <span class="st">'bedrooms'</span>, <span class="st">'bathrooms'</span>, <span class="st">'grade'</span>, <span class="st">'condition'</span>, <span class="st">'yr_built'</span>, <span class="st">'zipcode'</span>]</span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> data.drop(columns<span class="op">=</span>[<span class="st">'price'</span>])</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> data.drop(columns<span class="op">=</span>[<span class="st">'price'</span>,<span class="st">'zipcode'</span>])</span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co"># X = data[selected_features]  # Features</span></span>
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">'price'</span>]  <span class="co"># Target</span></span>
@@ -252,455 +243,40 @@ Successfully installed scikit-learn-1.5.2</code></pre>
 <span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Train Score: </span><span class="sc">{</span>train_score<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
 <span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Test Score: </span><span class="sc">{</span>test_score<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
-<span class="ansi-green-fg">/usr/local/lib/python3.11/dist-packages/pandas/core/indexes/base.py</span> in <span class="ansi-cyan-fg">get_loc</span><span class="ansi-blue-fg">(self, key)</span>
-<span class="ansi-green-fg ansi-bold">   3804</span>         <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">-&gt; 3805</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_engine<span class="ansi-blue-fg">.</span>get_loc<span class="ansi-blue-fg">(</span>casted_key<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg ansi-bold">   3806</span>         <span class="ansi-green-fg">except</span> KeyError <span class="ansi-green-fg">as</span> err<span class="ansi-blue-fg">:</span>
-
-<span class="ansi-green-fg">index.pyx</span> in <span class="ansi-cyan-fg">pandas._libs.index.IndexEngine.get_loc</span><span class="ansi-blue-fg">()</span>
-
-<span class="ansi-green-fg">index.pyx</span> in <span class="ansi-cyan-fg">pandas._libs.index.IndexEngine.get_loc</span><span class="ansi-blue-fg">()</span>
-
-<span class="ansi-green-fg">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ansi-cyan-fg">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="ansi-blue-fg">()</span>
-
-<span class="ansi-green-fg">pandas/_libs/hashtable_class_helper.pxi</span> in <span class="ansi-cyan-fg">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="ansi-blue-fg">()</span>
-
-<span class="ansi-red-fg">KeyError</span>: 'date'
-
-The above exception was the direct cause of the following exception:
-
-<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-7-5ecdfdf7d209&gt;</span> in <span class="ansi-cyan-fg">&lt;cell line: 0&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg ansi-bold">      1</span> <span class="ansi-red-fg"># Extract 'year_sold' from the 'date' column and drop the original 'date' column</span>
-<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>data<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">'year_sold'</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> data<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">'date'</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">.</span>str<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">:</span><span class="ansi-cyan-fg">4</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">.</span>astype<span class="ansi-blue-fg">(</span>int<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg ansi-bold">      3</span> data <span class="ansi-blue-fg">=</span> data<span class="ansi-blue-fg">.</span>drop<span class="ansi-blue-fg">(</span>columns<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">'date'</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg ansi-bold">      4</span> 
-<span class="ansi-green-fg ansi-bold">      5</span> <span class="ansi-red-fg"># Select only the 7 most relevant features</span>
-
-<span class="ansi-green-fg">/usr/local/lib/python3.11/dist-packages/pandas/core/frame.py</span> in <span class="ansi-cyan-fg">__getitem__</span><span class="ansi-blue-fg">(self, key)</span>
-<span class="ansi-green-fg ansi-bold">   4100</span>             <span class="ansi-green-fg">if</span> self<span class="ansi-blue-fg">.</span>columns<span class="ansi-blue-fg">.</span>nlevels <span class="ansi-blue-fg">&gt;</span> <span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg ansi-bold">   4101</span>                 <span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_getitem_multilevel<span class="ansi-blue-fg">(</span>key<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">-&gt; 4102</span><span class="ansi-red-fg">             </span>indexer <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>columns<span class="ansi-blue-fg">.</span>get_loc<span class="ansi-blue-fg">(</span>key<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg ansi-bold">   4103</span>             <span class="ansi-green-fg">if</span> is_integer<span class="ansi-blue-fg">(</span>indexer<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg ansi-bold">   4104</span>                 indexer <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">[</span>indexer<span class="ansi-blue-fg">]</span>
-
-<span class="ansi-green-fg">/usr/local/lib/python3.11/dist-packages/pandas/core/indexes/base.py</span> in <span class="ansi-cyan-fg">get_loc</span><span class="ansi-blue-fg">(self, key)</span>
-<span class="ansi-green-fg ansi-bold">   3810</span>             ):
-<span class="ansi-green-fg ansi-bold">   3811</span>                 <span class="ansi-green-fg">raise</span> InvalidIndexError<span class="ansi-blue-fg">(</span>key<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">-&gt; 3812</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">raise</span> KeyError<span class="ansi-blue-fg">(</span>key<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">from</span> err
-<span class="ansi-green-fg ansi-bold">   3813</span>         <span class="ansi-green-fg">except</span> TypeError<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg ansi-bold">   3814</span>             <span class="ansi-red-fg"># If we have a listlike key, _check_indexing_error will raise</span>
-
-<span class="ansi-red-fg">KeyError</span>: 'date'</pre>
+<div class="cell-output cell-output-stdout">
+<pre><code>Train Score: 0.9761
+Test Score: 0.8800</code></pre>
 </div>
 </div>
-</div>
-<div id="cell-3" class="cell" data-outputid="e9653e0d-535c-468e-8278-9d588e1780c5" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split, GridSearchCV</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler, OneHotEncoder</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xgboost <span class="im">as</span> xgb</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Load dataset</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/housing.csv'</span>)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Feature Engineering</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'year_sold'</span>] <span class="op">=</span> data[<span class="st">'date'</span>].<span class="bu">str</span>[:<span class="dv">4</span>].astype(<span class="bu">int</span>)</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'house_age'</span>] <span class="op">=</span> data[<span class="st">'year_sold'</span>] <span class="op">-</span> data[<span class="st">'yr_built'</span>]</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.drop(columns<span class="op">=</span>[<span class="st">'id'</span>, <span class="st">'date'</span>])</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Separate features and target</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> data.drop(columns<span class="op">=</span>[<span class="st">'price'</span>])</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">'price'</span>]</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Define categorical and numerical features</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>categorical_features <span class="op">=</span> [<span class="st">'zipcode'</span>]</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>numerical_features <span class="op">=</span> X.select_dtypes(include<span class="op">=</span>[<span class="st">'number'</span>]).columns.tolist()</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Create transformers for numerical and categorical features</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>numerical_transformer <span class="op">=</span> Pipeline(steps<span class="op">=</span>[</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'scaler'</span>, StandardScaler())</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>categorical_transformer <span class="op">=</span> Pipeline(steps<span class="op">=</span>[</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'onehot'</span>, OneHotEncoder(handle_unknown<span class="op">=</span><span class="st">'ignore'</span>, sparse_output<span class="op">=</span><span class="va">False</span>))</span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine transformers using ColumnTransformer</span></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>preprocessor <span class="op">=</span> ColumnTransformer(</span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    transformers<span class="op">=</span>[</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'num'</span>, numerical_transformer, numerical_features),</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'cat'</span>, categorical_transformer, categorical_features)</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    ])</span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Create pipeline with preprocessor and XGBoost model</span></span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>pipeline <span class="op">=</span> Pipeline(steps<span class="op">=</span>[</span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'preprocessor'</span>, preprocessor),</span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>    (<span class="st">'regressor'</span>, xgb.XGBRegressor(objective<span class="op">=</span><span class="st">'reg:squarederror'</span>, random_state<span class="op">=</span><span class="dv">42</span>))</span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Define hyperparameter grid for tuning</span></span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>param_grid <span class="op">=</span> {</span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>    <span class="st">'regressor__n_estimators'</span>: [<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">300</span>],</span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>    <span class="st">'regressor__learning_rate'</span>: [<span class="fl">0.01</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span>],</span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>    <span class="st">'regressor__max_depth'</span>: [<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform GridSearchCV for hyperparameter tuning</span></span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>grid_search <span class="op">=</span> GridSearchCV(pipeline, param_grid, cv<span class="op">=</span><span class="dv">5</span>, scoring<span class="op">=</span><span class="st">'r2'</span>)</span>
-<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>grid_search.fit(X, y)</span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a><span class="co"># Print best parameters and score</span></span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best parameters:"</span>, grid_search.best_params_)</span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best score:"</span>, grid_search.best_score_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:493: FutureWarning: `BaseEstimator._check_feature_names` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_feature_names` instead.
-  warnings.warn(
-/usr/local/lib/python3.11/dist-packages/sklearn/base.py:484: FutureWarning: `BaseEstimator._check_n_features` is deprecated in 1.6 and will be removed in 1.7. Use `sklearn.utils.validation._check_n_features` instead.
-  </code></pre>
-</div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">KeyboardInterrupt</span>                         Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-6-743b45a2d52c&gt;</span> in <span class="ansi-cyan-fg">&lt;cell line: 0&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg ansi-bold">     52</span> <span class="ansi-red-fg"># Perform GridSearchCV for hyperparameter tuning</span>
-<span class="ansi-green-fg ansi-bold">     53</span> grid_search <span class="ansi-blue-fg">=</span> GridSearchCV<span class="ansi-blue-fg">(</span>pipeline<span class="ansi-blue-fg">,</span> param_grid<span class="ansi-blue-fg">,</span> cv<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">5</span><span class="ansi-blue-fg">,</span> scoring<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">'r2'</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">---&gt; 54</span><span class="ansi-red-fg"> </span>grid_search<span class="ansi-blue-fg">.</span>fit<span class="ansi-blue-fg">(</span>X<span class="ansi-blue-fg">,</span> y<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg ansi-bold">     55</span> 
-<span class="ansi-green-fg ansi-bold">     56</span> <span class="ansi-red-fg"># Print best parameters and score</span>
-
-<span class="ansi-green-fg">/usr/local/lib/python3.11/dist-packages/sklearn/base.py</span> in <span class="ansi-cyan-fg">wrapper</span><span class="ansi-blue-fg">(estimator, *args, **kwargs)</span>
-<span class="ansi-green-fg ansi-bold">   1387</span> 
-<span class="ansi-green-fg ansi-bold">   1388</span> <span class="ansi-green-fg">def</span> is_regressor<span class="ansi-blue-fg">(</span>estimator<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">-&gt; 1389</span><span class="ansi-red-fg">     """Return True if the given estimator is (probably) a regressor.
-</span><span class="ansi-green-fg ansi-bold">   1390</span> 
-<span class="ansi-green-fg ansi-bold">   1391</span>     Parameters
-
-<span class="ansi-green-fg">/usr/local/lib/python3.11/dist-packages/sklearn/model_selection/_search.py</span> in <span class="ansi-cyan-fg">fit</span><span class="ansi-blue-fg">(self, X, y, **params)</span>
-<span class="ansi-green-fg ansi-bold">   1022</span>             <span class="ansi-red-fg"># self.scoring the return type is only known after calling</span>
-<span class="ansi-green-fg ansi-bold">   1023</span>             first_test_score <span class="ansi-blue-fg">=</span> all_out<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">"test_scores"</span><span class="ansi-blue-fg">]</span>
-<span class="ansi-green-fg">-&gt; 1024</span><span class="ansi-red-fg">             </span>self<span class="ansi-blue-fg">.</span>multimetric_ <span class="ansi-blue-fg">=</span> isinstance<span class="ansi-blue-fg">(</span>first_test_score<span class="ansi-blue-fg">,</span> dict<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg ansi-bold">   1025</span> 
-<span class="ansi-green-fg ansi-bold">   1026</span>             <span class="ansi-red-fg"># check refit_metric now for a callabe scorer that is multimetric</span>
-
-<span class="ansi-green-fg">/usr/local/lib/python3.11/dist-packages/sklearn/model_selection/_search.py</span> in <span class="ansi-cyan-fg">_run_search</span><span class="ansi-blue-fg">(self, evaluate_candidates)</span>
-<span class="ansi-green-fg ansi-bold">   1569</span>         self<span class="ansi-blue-fg">.</span>param_grid <span class="ansi-blue-fg">=</span> param_grid
-<span class="ansi-green-fg ansi-bold">   1570</span> 
-<span class="ansi-green-fg">-&gt; 1571</span><span class="ansi-red-fg">     </span><span class="ansi-green-fg">def</span> _run_search<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> evaluate_candidates<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg ansi-bold">   1572</span>         <span class="ansi-blue-fg">"""Search all candidates in param_grid"""</span>
-<span class="ansi-green-fg ansi-bold">   1573</span>         evaluate_candidates<span class="ansi-blue-fg">(</span>ParameterGrid<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>param_grid<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">/usr/local/lib/python3.11/dist-packages/sklearn/model_selection/_search.py</span> in <span class="ansi-cyan-fg">evaluate_candidates</span><span class="ansi-blue-fg">(candidate_params, cv, more_results)</span>
-<span class="ansi-green-fg ansi-bold">    968</span>                         X<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-fg ansi-bold">    969</span>                         y<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-fg">--&gt; 970</span><span class="ansi-red-fg">                         </span>train<span class="ansi-blue-fg">=</span>train<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-fg ansi-bold">    971</span>                         test<span class="ansi-blue-fg">=</span>test<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-fg ansi-bold">    972</span>                         parameters<span class="ansi-blue-fg">=</span>parameters<span class="ansi-blue-fg">,</span>
-
-<span class="ansi-green-fg">/usr/local/lib/python3.11/dist-packages/sklearn/utils/parallel.py</span> in <span class="ansi-cyan-fg">__call__</span><span class="ansi-blue-fg">(self, iterable)</span>
-<span class="ansi-green-fg ansi-bold">     75</span> 
-<span class="ansi-green-fg ansi-bold">     76</span> 
-<span class="ansi-green-fg">---&gt; 77</span><span class="ansi-red-fg"> </span><span class="ansi-red-fg"># remove when https://github.com/joblib/joblib/issues/1071 is fixed</span>
-<span class="ansi-green-fg ansi-bold">     78</span> <span class="ansi-green-fg">def</span> delayed<span class="ansi-blue-fg">(</span>function<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg ansi-bold">     79</span>     """Decorator used to capture the arguments of a function.
-
-<span class="ansi-green-fg">/usr/local/lib/python3.11/dist-packages/joblib/parallel.py</span> in <span class="ansi-cyan-fg">__call__</span><span class="ansi-blue-fg">(self, iterable)</span>
-<span class="ansi-green-fg ansi-bold">   1916</span>             output <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_get_sequential_output<span class="ansi-blue-fg">(</span>iterable<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg ansi-bold">   1917</span>             next<span class="ansi-blue-fg">(</span>output<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">-&gt; 1918</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> output <span class="ansi-green-fg">if</span> self<span class="ansi-blue-fg">.</span>return_generator <span class="ansi-green-fg">else</span> list<span class="ansi-blue-fg">(</span>output<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg ansi-bold">   1919</span> 
-<span class="ansi-green-fg ansi-bold">   1920</span>         <span class="ansi-red-fg"># Let's create an ID that uniquely identifies the current call. If the</span>
-
-<span class="ansi-green-fg">/usr/local/lib/python3.11/dist-packages/joblib/parallel.py</span> in <span class="ansi-cyan-fg">_get_sequential_output</span><span class="ansi-blue-fg">(self, iterable)</span>
-<span class="ansi-green-fg ansi-bold">   1845</span>                 self<span class="ansi-blue-fg">.</span>n_dispatched_batches <span class="ansi-blue-fg">+=</span> <span class="ansi-cyan-fg">1</span>
-<span class="ansi-green-fg ansi-bold">   1846</span>                 self<span class="ansi-blue-fg">.</span>n_dispatched_tasks <span class="ansi-blue-fg">+=</span> <span class="ansi-cyan-fg">1</span>
-<span class="ansi-green-fg">-&gt; 1847</span><span class="ansi-red-fg">                 </span>res <span class="ansi-blue-fg">=</span> func<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg ansi-bold">   1848</span>                 self<span class="ansi-blue-fg">.</span>n_completed_tasks <span class="ansi-blue-fg">+=</span> <span class="ansi-cyan-fg">1</span>
-<span class="ansi-green-fg ansi-bold">   1849</span>                 self<span class="ansi-blue-fg">.</span>print_progress<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">/usr/local/lib/python3.11/dist-packages/sklearn/utils/parallel.py</span> in <span class="ansi-cyan-fg">__call__</span><span class="ansi-blue-fg">(self, *args, **kwargs)</span>
-<span class="ansi-green-fg ansi-bold">    137</span> 
-<span class="ansi-green-fg ansi-bold">    138</span> 
-<span class="ansi-green-fg">--&gt; 139</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">def</span> _get_threadpool_controller<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg ansi-bold">    140</span>     <span class="ansi-blue-fg">"""Return the global threadpool controller instance."""</span>
-<span class="ansi-green-fg ansi-bold">    141</span>     <span class="ansi-green-fg">global</span> _threadpool_controller
-
-<span class="ansi-green-fg">/usr/local/lib/python3.11/dist-packages/sklearn/model_selection/_validation.py</span> in <span class="ansi-cyan-fg">_fit_and_score</span><span class="ansi-blue-fg">(estimator, X, y, scorer, train, test, verbose, parameters, fit_params, score_params, return_train_score, return_parameters, return_n_test_samples, return_times, return_estimator, split_progress, candidate_progress, error_score)</span>
-<span class="ansi-green-fg ansi-bold">    864</span>     <span class="ansi-red-fg"># Adjust length of sample weights</span>
-<span class="ansi-green-fg ansi-bold">    865</span>     fit_params <span class="ansi-blue-fg">=</span> fit_params <span class="ansi-green-fg">if</span> fit_params <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span> <span class="ansi-green-fg">else</span> <span class="ansi-blue-fg">{</span><span class="ansi-blue-fg">}</span>
-<span class="ansi-green-fg">--&gt; 866</span><span class="ansi-red-fg">     </span>fit_params <span class="ansi-blue-fg">=</span> _check_method_params<span class="ansi-blue-fg">(</span>X<span class="ansi-blue-fg">,</span> params<span class="ansi-blue-fg">=</span>fit_params<span class="ansi-blue-fg">,</span> indices<span class="ansi-blue-fg">=</span>train<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg ansi-bold">    867</span>     score_params <span class="ansi-blue-fg">=</span> score_params <span class="ansi-green-fg">if</span> score_params <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span> <span class="ansi-green-fg">else</span> <span class="ansi-blue-fg">{</span><span class="ansi-blue-fg">}</span>
-<span class="ansi-green-fg ansi-bold">    868</span>     score_params_train <span class="ansi-blue-fg">=</span> _check_method_params<span class="ansi-blue-fg">(</span>X<span class="ansi-blue-fg">,</span> params<span class="ansi-blue-fg">=</span>score_params<span class="ansi-blue-fg">,</span> indices<span class="ansi-blue-fg">=</span>train<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">/usr/local/lib/python3.11/dist-packages/sklearn/base.py</span> in <span class="ansi-cyan-fg">wrapper</span><span class="ansi-blue-fg">(estimator, *args, **kwargs)</span>
-<span class="ansi-green-fg ansi-bold">   1387</span> 
-<span class="ansi-green-fg ansi-bold">   1388</span> <span class="ansi-green-fg">def</span> is_regressor<span class="ansi-blue-fg">(</span>estimator<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">-&gt; 1389</span><span class="ansi-red-fg">     """Return True if the given estimator is (probably) a regressor.
-</span><span class="ansi-green-fg ansi-bold">   1390</span> 
-<span class="ansi-green-fg ansi-bold">   1391</span>     Parameters
-
-<span class="ansi-green-fg">/usr/local/lib/python3.11/dist-packages/sklearn/pipeline.py</span> in <span class="ansi-cyan-fg">fit</span><span class="ansi-blue-fg">(self, X, y, **params)</span>
-<span class="ansi-green-fg ansi-bold">    471</span>             <span class="ansi-green-fg">if</span> self<span class="ansi-blue-fg">.</span>_final_estimator <span class="ansi-blue-fg">!=</span> <span class="ansi-blue-fg">"passthrough"</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg ansi-bold">    472</span>                 last_step_params <span class="ansi-blue-fg">=</span> routed_params<span class="ansi-blue-fg">[</span>self<span class="ansi-blue-fg">.</span>steps<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">-</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">]</span>
-<span class="ansi-green-fg">--&gt; 473</span><span class="ansi-red-fg">                 </span>self<span class="ansi-blue-fg">.</span>_final_estimator<span class="ansi-blue-fg">.</span>fit<span class="ansi-blue-fg">(</span>Xt<span class="ansi-blue-fg">,</span> y<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>last_step_params<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">"fit"</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg ansi-bold">    474</span> 
-<span class="ansi-green-fg ansi-bold">    475</span>         <span class="ansi-green-fg">return</span> self
-
-<span class="ansi-green-fg">/usr/local/lib/python3.11/dist-packages/xgboost/core.py</span> in <span class="ansi-cyan-fg">inner_f</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
-<span class="ansi-green-fg ansi-bold">    724</span>             <span class="ansi-green-fg">for</span> k<span class="ansi-blue-fg">,</span> arg <span class="ansi-green-fg">in</span> zip<span class="ansi-blue-fg">(</span>sig<span class="ansi-blue-fg">.</span>parameters<span class="ansi-blue-fg">,</span> args<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg ansi-bold">    725</span>                 kwargs<span class="ansi-blue-fg">[</span>k<span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> arg
-<span class="ansi-green-fg">--&gt; 726</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> func<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg ansi-bold">    727</span> 
-<span class="ansi-green-fg ansi-bold">    728</span>         <span class="ansi-green-fg">return</span> inner_f
-
-<span class="ansi-green-fg">/usr/local/lib/python3.11/dist-packages/xgboost/sklearn.py</span> in <span class="ansi-cyan-fg">fit</span><span class="ansi-blue-fg">(self, X, y, sample_weight, base_margin, eval_set, verbose, xgb_model, sample_weight_eval_set, base_margin_eval_set, feature_weights)</span>
-<span class="ansi-green-fg ansi-bold">   1106</span> 
-<span class="ansi-green-fg ansi-bold">   1107</span>             model<span class="ansi-blue-fg">,</span> metric<span class="ansi-blue-fg">,</span> params <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_configure_fit<span class="ansi-blue-fg">(</span>xgb_model<span class="ansi-blue-fg">,</span> params<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">-&gt; 1108</span><span class="ansi-red-fg">             self._Booster = train(
-</span><span class="ansi-green-fg ansi-bold">   1109</span>                 params<span class="ansi-blue-fg">,</span>
-<span class="ansi-green-fg ansi-bold">   1110</span>                 train_dmatrix<span class="ansi-blue-fg">,</span>
-
-<span class="ansi-green-fg">/usr/local/lib/python3.11/dist-packages/xgboost/core.py</span> in <span class="ansi-cyan-fg">inner_f</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
-<span class="ansi-green-fg ansi-bold">    724</span>             <span class="ansi-green-fg">for</span> k<span class="ansi-blue-fg">,</span> arg <span class="ansi-green-fg">in</span> zip<span class="ansi-blue-fg">(</span>sig<span class="ansi-blue-fg">.</span>parameters<span class="ansi-blue-fg">,</span> args<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg ansi-bold">    725</span>                 kwargs<span class="ansi-blue-fg">[</span>k<span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> arg
-<span class="ansi-green-fg">--&gt; 726</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> func<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg ansi-bold">    727</span> 
-<span class="ansi-green-fg ansi-bold">    728</span>         <span class="ansi-green-fg">return</span> inner_f
-
-<span class="ansi-green-fg">/usr/local/lib/python3.11/dist-packages/xgboost/training.py</span> in <span class="ansi-cyan-fg">train</span><span class="ansi-blue-fg">(params, dtrain, num_boost_round, evals, obj, feval, maximize, early_stopping_rounds, evals_result, verbose_eval, xgb_model, callbacks, custom_metric)</span>
-<span class="ansi-green-fg ansi-bold">    179</span>         <span class="ansi-green-fg">if</span> cb_container<span class="ansi-blue-fg">.</span>before_iteration<span class="ansi-blue-fg">(</span>bst<span class="ansi-blue-fg">,</span> i<span class="ansi-blue-fg">,</span> dtrain<span class="ansi-blue-fg">,</span> evals<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg ansi-bold">    180</span>             <span class="ansi-green-fg">break</span>
-<span class="ansi-green-fg">--&gt; 181</span><span class="ansi-red-fg">         </span>bst<span class="ansi-blue-fg">.</span>update<span class="ansi-blue-fg">(</span>dtrain<span class="ansi-blue-fg">,</span> iteration<span class="ansi-blue-fg">=</span>i<span class="ansi-blue-fg">,</span> fobj<span class="ansi-blue-fg">=</span>obj<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg ansi-bold">    182</span>         <span class="ansi-green-fg">if</span> cb_container<span class="ansi-blue-fg">.</span>after_iteration<span class="ansi-blue-fg">(</span>bst<span class="ansi-blue-fg">,</span> i<span class="ansi-blue-fg">,</span> dtrain<span class="ansi-blue-fg">,</span> evals<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg ansi-bold">    183</span>             <span class="ansi-green-fg">break</span>
-
-<span class="ansi-green-fg">/usr/local/lib/python3.11/dist-packages/xgboost/core.py</span> in <span class="ansi-cyan-fg">update</span><span class="ansi-blue-fg">(self, dtrain, iteration, fobj)</span>
-<span class="ansi-green-fg ansi-bold">   2099</span>         <span class="ansi-green-fg">if</span> fobj <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg ansi-bold">   2100</span>             _check_call(
-<span class="ansi-green-fg">-&gt; 2101</span><span class="ansi-red-fg">                 _LIB.XGBoosterUpdateOneIter(
-</span><span class="ansi-green-fg ansi-bold">   2102</span>                     self<span class="ansi-blue-fg">.</span>handle<span class="ansi-blue-fg">,</span> ctypes<span class="ansi-blue-fg">.</span>c_int<span class="ansi-blue-fg">(</span>iteration<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">,</span> dtrain<span class="ansi-blue-fg">.</span>handle
-<span class="ansi-green-fg ansi-bold">   2103</span>                 )
-
-<span class="ansi-red-fg">KeyboardInterrupt</span>: </pre>
-</div>
+<div id="cell-3" class="cell" data-outputid="7343afed-bc52-4618-d209-fce88126b585" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load new dataset (for prediction)</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>new_data_path <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/housing_holdout_test_mini.csv"</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>new_data <span class="op">=</span> pd.read_csv(new_data_path)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract 'year_sold' from 'date' and drop 'id' &amp; 'date'</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>new_data[<span class="st">'year_sold'</span>] <span class="op">=</span> new_data[<span class="st">'date'</span>].<span class="bu">str</span>[:<span class="dv">4</span>].astype(<span class="bu">int</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>new_data <span class="op">=</span> new_data.drop(columns<span class="op">=</span>[<span class="st">'id'</span>, <span class="st">'date'</span>])</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Select all features dynamically (excluding 'price' if it exists)</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>X_new <span class="op">=</span> new_data.drop(columns<span class="op">=</span>[<span class="st">'price'</span>,<span class="st">'zipcode'</span>], errors<span class="op">=</span><span class="st">'ignore'</span>).copy()  <span class="co"># Exclude 'price' only if present</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a> <span class="co"># Ideally, reuse the trained encoder</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict prices using the trained model</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>predicted_prices <span class="op">=</span> xgb_model.predict(X_new)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Round predictions to the nearest whole number</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>predicted_prices <span class="op">=</span> predicted_prices.<span class="bu">round</span>(<span class="dv">0</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Save predictions as a single-column CSV with header 'price'</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> pd.DataFrame({<span class="st">'price'</span>: predicted_prices})</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>results.to_csv(<span class="st">"team8-module3-predictions.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Predictions saved to team8-module3-predictions.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Predictions saved to team8-module3-predictions.csv</code></pre>
 </div>
 </div>
 
