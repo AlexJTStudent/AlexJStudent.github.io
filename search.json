@@ -63,145 +63,210 @@
     "text": "Paste in a template\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "story_telling.html",
-    "href": "story_telling.html",
+    "objectID": "Module4Training.html",
+    "href": "Module4Training.html",
+    "title": "Alex Tovar - Data Science Portfolio",
+    "section": "",
+    "text": "# prompt: use this link for the data: https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/bikes.csv\n\nimport pandas as pd\n\n# Load the dataframe.\ndf_bikes = pd.read_csv('https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/bikes.csv')\n\n# Print some info.\ndf_bikes.info()\nprint(df_bikes.head())\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 112475 entries, 0 to 112474\nData columns (total 12 columns):\n #   Column        Non-Null Count   Dtype  \n---  ------        --------------   -----  \n 0   dteday        112475 non-null  object \n 1   hr            112475 non-null  float64\n 2   casual        112475 non-null  int64  \n 3   registered    112475 non-null  int64  \n 4   temp_c        112475 non-null  float64\n 5   feels_like_c  112475 non-null  float64\n 6   hum           112475 non-null  float64\n 7   windspeed     112475 non-null  float64\n 8   weathersit    112475 non-null  int64  \n 9   season        112475 non-null  int64  \n 10  holiday       112475 non-null  int64  \n 11  workingday    112475 non-null  int64  \ndtypes: float64(5), int64(6), object(1)\nmemory usage: 10.3+ MB\n     dteday   hr  casual  registered  temp_c  feels_like_c     hum  windspeed  \\\n0  1/1/2011  0.0       3          13     3.0           3.0  0.7957        0.8   \n1  1/1/2011  1.0       8          30     1.7           1.7  0.8272        0.8   \n2  1/1/2011  2.0       5          26     1.9           1.9  0.8157        1.1   \n3  1/1/2011  3.0       3           9     2.5           2.5  0.7831        0.8   \n4  1/1/2011  4.0       0           1     2.0           2.0  0.8075        1.1   \n\n   weathersit  season  holiday  workingday  \n0           1       1        0           0  \n1           1       1        0           0  \n2           1       1        0           0  \n3           1       1        0           0  \n4           1       1        0           0  \n\n\n\n# prompt: make a tensorflow neural network model\n\nimport tensorflow as tf\nfrom tensorflow import keras\nfrom sklearn.model_selection import train_test_split\n\n# Assuming 'count' is the target variable and other columns are features\nX = df_bikes.drop('count', axis=1)\ny = df_bikes['count']\n\n# Convert categorical features to numerical using one-hot encoding if needed\nX = pd.get_dummies(X, columns=['season', 'yr', 'mnth', 'holiday', 'weekday', 'workingday', 'weathersit'])\n\n# Split data into training and testing sets\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n# Define the model\nmodel = keras.Sequential([\n    keras.layers.Dense(64, activation='relu', input_shape=(X_train.shape[1],)),\n    keras.layers.Dense(32, activation='relu'),\n    keras.layers.Dense(1) # Output layer for regression\n])\n\n# Compile the model\nmodel.compile(optimizer='adam', loss='mse', metrics=['mae']) # Use appropriate loss and metrics for regression\n\n# Train the model\nmodel.fit(X_train, y_train, epochs=10, batch_size=32, validation_split=0.2) # Adjust epochs and batch size as needed\n\n# Evaluate the model\nloss, mae = model.evaluate(X_test, y_test)\nprint(f\"Mean Absolute Error: {mae}\")\n\n# Make predictions\npredictions = model.predict(X_test)\npredictions\n\n\n---------------------------------------------------------------------------\nKeyError                                  Traceback (most recent call last)\n&lt;ipython-input-4-e5af95e17599&gt; in &lt;cell line: 0&gt;()\n      6 \n      7 # Assuming 'count' is the target variable and other columns are features\n----&gt; 8 X = df_bikes.drop('count', axis=1)\n      9 y = df_bikes['count']\n     10 \n\n/usr/local/lib/python3.11/dist-packages/pandas/core/frame.py in drop(self, labels, axis, index, columns, level, inplace, errors)\n   5579                 weight  1.0     0.8\n   5580         \"\"\"\n-&gt; 5581         return super().drop(\n   5582             labels=labels,\n   5583             axis=axis,\n\n/usr/local/lib/python3.11/dist-packages/pandas/core/generic.py in drop(self, labels, axis, index, columns, level, inplace, errors)\n   4786         for axis, labels in axes.items():\n   4787             if labels is not None:\n-&gt; 4788                 obj = obj._drop_axis(labels, axis, level=level, errors=errors)\n   4789 \n   4790         if inplace:\n\n/usr/local/lib/python3.11/dist-packages/pandas/core/generic.py in _drop_axis(self, labels, axis, level, errors, only_slice)\n   4828                 new_axis = axis.drop(labels, level=level, errors=errors)\n   4829             else:\n-&gt; 4830                 new_axis = axis.drop(labels, errors=errors)\n   4831             indexer = axis.get_indexer(new_axis)\n   4832 \n\n/usr/local/lib/python3.11/dist-packages/pandas/core/indexes/base.py in drop(self, labels, errors)\n   7068         if mask.any():\n   7069             if errors != \"ignore\":\n-&gt; 7070                 raise KeyError(f\"{labels[mask].tolist()} not found in axis\")\n   7071             indexer = indexer[~mask]\n   7072         return self.delete(indexer)\n\nKeyError: \"['count'] not found in axis\"\n\n\n\n\nimport pandas as pd\nimport tensorflow as tf\nfrom tensorflow import keras\nfrom sklearn.model_selection import train_test_split\n\n# Load the dataframe (assuming it's already loaded as 'df_bikes').\n# df_bikes = pd.read_csv('your_data_source.csv')\n\n# Create the target variable by combining 'casual' and 'registered'\ndf_bikes['total_count'] = df_bikes['casual'] + df_bikes['registered']\n\n# Define features and target\nX = df_bikes[['temp_c', 'feels_like_c', 'hum', 'windspeed', 'weathersit', 'season', 'holiday', 'workingday']]\ny = df_bikes['total_count']\n\n# One-hot encode categorical features\nX = pd.get_dummies(X, columns=['weathersit', 'season', 'holiday', 'workingday'])\n\n# Split data\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n# Define the model\nmodel = keras.Sequential([\n    keras.layers.Dense(64, activation='relu', input_shape=(X_train.shape[1],)),\n    keras.layers.Dense(32, activation='relu'),\n    keras.layers.Dense(1)  # Output layer for regression\n])\n\n# Compile the model\nmodel.compile(optimizer='adam', loss='mse', metrics=['mae'])\n\n# Train the model\nmodel.fit(X_train, y_train, epochs=10, batch_size=32, validation_split=0.2)\n\n# Evaluate the model\nloss, mae = model.evaluate(X_test, y_test)\nprint(f\"Mean Absolute Error: {mae}\")\n\n# Make predictions\npredictions = model.predict(X_test)\n\n/usr/local/lib/python3.11/dist-packages/keras/src/layers/core/dense.py:87: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.\n  super().__init__(activity_regularizer=activity_regularizer, **kwargs)\n\n\nEpoch 1/10\n2250/2250 ━━━━━━━━━━━━━━━━━━━━ 8s 2ms/step - loss: 113390.3125 - mae: 243.1920 - val_loss: 85956.3984 - val_mae: 215.8419\nEpoch 2/10\n2250/2250 ━━━━━━━━━━━━━━━━━━━━ 12s 3ms/step - loss: 85492.3828 - mae: 217.6653 - val_loss: 81624.4141 - val_mae: 208.2635\nEpoch 3/10\n2250/2250 ━━━━━━━━━━━━━━━━━━━━ 6s 3ms/step - loss: 82931.4609 - mae: 212.6183 - val_loss: 79374.5156 - val_mae: 203.1673\nEpoch 4/10\n2250/2250 ━━━━━━━━━━━━━━━━━━━━ 10s 2ms/step - loss: 80729.6719 - mae: 209.0209 - val_loss: 78288.8438 - val_mae: 200.8338\nEpoch 5/10\n2250/2250 ━━━━━━━━━━━━━━━━━━━━ 7s 3ms/step - loss: 79184.2734 - mae: 206.5372 - val_loss: 78544.4688 - val_mae: 200.3522\nEpoch 6/10\n2250/2250 ━━━━━━━━━━━━━━━━━━━━ 6s 3ms/step - loss: 78554.8672 - mae: 205.1937 - val_loss: 78627.8906 - val_mae: 210.7880\nEpoch 7/10\n2250/2250 ━━━━━━━━━━━━━━━━━━━━ 7s 3ms/step - loss: 78600.2188 - mae: 205.5919 - val_loss: 77284.9609 - val_mae: 204.3620\nEpoch 8/10\n2250/2250 ━━━━━━━━━━━━━━━━━━━━ 9s 3ms/step - loss: 78882.2812 - mae: 206.0225 - val_loss: 77832.2656 - val_mae: 199.8365\nEpoch 9/10\n2250/2250 ━━━━━━━━━━━━━━━━━━━━ 10s 2ms/step - loss: 78725.6406 - mae: 205.3156 - val_loss: 78041.6094 - val_mae: 197.7063\nEpoch 10/10\n2250/2250 ━━━━━━━━━━━━━━━━━━━━ 11s 3ms/step - loss: 77927.5078 - mae: 203.9755 - val_loss: 76924.0156 - val_mae: 202.6045\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 2ms/step - loss: 76629.5703 - mae: 202.7970\nMean Absolute Error: 203.04978942871094\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n\n\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# Assuming you have trained your model and it's named 'model'\n# and your features are in a DataFrame called 'X'\n\n# Get feature importances using permutation importance\nfrom sklearn.inspection import permutation_importance\nresults = permutation_importance(model, X_test, y_test, scoring='neg_mean_squared_error')\n\n# Sort feature importances in descending order\nimportance = results.importances_mean\nsorted_idx = importance.argsort()[::-1] # Reverse the order to get descending sort\n\n# Create horizontal bar plot\nfig, ax = plt.subplots(figsize=(10, 6)) # Adjust figsize as needed\nax.barh(X.columns[sorted_idx], importance[sorted_idx])\nax.set_xlabel(\"Permutation Importance\")\nax.set_title(\"Feature Importance\")\nplt.show()\n\n703/703 ━━━━━━━━━━━━━━━━━━━━ 2s 3ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 2ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 2ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 2ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 2ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 2ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 2ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 2ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 2ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 2s 3ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 2ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 2ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n703/703 ━━━━━━━━━━━━━━━━━━━━ 1s 1ms/step\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "Untitled0.html",
+    "href": "Untitled0.html",
+    "title": "Alex Tovar - Data Science Portfolio",
+    "section": "",
+    "text": "# Import Libraries -------------------------------------------------------------\nimport pandas as pd\nfrom plotnine import ggplot, aes, geom_bar, labs, theme_minimal, facet_wrap\n\nhello!!\n\n# Reading Data -----------------------------------------------------------------\nnetflix = pd.read_csv('https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/netflix_titles.csv')\n\n\n# Movies -----------------------------------------------------------------------\nmovies = netflix[ netflix['type'] == 'Movie']\n# movies.head()\n\nratings = ['G', 'PG', 'PG-13', 'R', 'NC-17']\nmovies2 = movies[ movies['rating'].isin(ratings) ]\nmovies2['rating'].value_counts()\n\nggplot(movies2, aes(x='rating')) + \\\n    geom_bar(fill='skyblue') + \\\n    labs(title='Movie Ratings Distribution', x='Rating', y='Count') + \\\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n# Tv Shows ---------------------------------------------------------------------\ntvshows = netflix[ netflix['type'] == 'TV Show']\n# tvshows.head()\n\ntvratings = ['TV-Y', 'TV-Y7', 'TV-G']\nshows2 = tvshows[ tvshows['rating'].isin(tvratings) ]\nshows2['rating'].value_counts()\n\nggplot(shows2, aes(x='rating')) + \\\n    geom_bar(fill='skyblue') + \\\n    labs(title='Movie Ratings Distribution', x='Rating', y='Count') + \\\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "full_stack.html",
+    "href": "full_stack.html",
     "title": "about me",
     "section": "",
     "text": "MarkDown Basics",
     "crumbs": [
-      "Story Telling"
+      "Full Stack"
     ]
   },
   {
-    "objectID": "story_telling.html#title-2-header",
-    "href": "story_telling.html#title-2-header",
+    "objectID": "full_stack.html#title-2-header",
+    "href": "full_stack.html#title-2-header",
     "title": "about me",
     "section": "",
     "text": "MarkDown Basics",
     "crumbs": [
-      "Story Telling"
+      "Full Stack"
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics"
-  },
-  {
-    "objectID": "index.html#title-2-header",
-    "href": "index.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics"
-  },
-  {
-    "objectID": "Story_Telling/project5.html",
-    "href": "Story_Telling/project5.html",
+    "objectID": "Story_Telling/project2.html",
+    "href": "Story_Telling/project2.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
     "text": "Paste in a template\n\n\n\n\n Back to top",
     "crumbs": [
       "Story Telling",
-      "Project 5"
-    ]
-  },
-  {
-    "objectID": "Story_Telling/project1.html",
-    "href": "Story_Telling/project1.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Story Telling",
-      "Project 1"
-    ]
-  },
-  {
-    "objectID": "Story_Telling/project3.html",
-    "href": "Story_Telling/project3.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Story Telling",
-      "Project 3"
-    ]
-  },
-  {
-    "objectID": "competition.html",
-    "href": "competition.html",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Competition"
-    ]
-  },
-  {
-    "objectID": "competition.html#title-2-header",
-    "href": "competition.html#title-2-header",
-    "title": "about me",
-    "section": "",
-    "text": "MarkDown Basics",
-    "crumbs": [
-      "Competition"
-    ]
-  },
-  {
-    "objectID": "Cleansing_Projects/project5.html",
-    "href": "Cleansing_Projects/project5.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Data Cleansing",
-      "Project 5"
-    ]
-  },
-  {
-    "objectID": "Cleansing_Projects/project1.html",
-    "href": "Cleansing_Projects/project1.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Data Cleansing",
-      "Project 1"
-    ]
-  },
-  {
-    "objectID": "Cleansing_Projects/project3.html",
-    "href": "Cleansing_Projects/project3.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Data Cleansing",
-      "Project 3"
-    ]
-  },
-  {
-    "objectID": "Competition/project2.html",
-    "href": "Competition/project2.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Competition",
       "Project 2"
     ]
   },
   {
-    "objectID": "Competition/project4.html",
-    "href": "Competition/project4.html",
+    "objectID": "Story_Telling/project4.html",
+    "href": "Story_Telling/project4.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Story Telling",
+      "Project 4"
+    ]
+  },
+  {
+    "objectID": "cleansing.html",
+    "href": "cleansing.html",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Data Cleansing"
+    ]
+  },
+  {
+    "objectID": "cleansing.html#title-2-header",
+    "href": "cleansing.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics",
+    "crumbs": [
+      "Data Cleansing"
+    ]
+  },
+  {
+    "objectID": "MLPredictions.html",
+    "href": "MLPredictions.html",
+    "title": "Alex Tovar - Data Science Portfolio",
+    "section": "",
+    "text": "import pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.metrics import accuracy_score\n\n\nwine_data = pd.read_csv('wine-training.csv')\n(wine_data).head()\n\n\n  \n    \n\n\n\n\n\n\nalcohol\nmalic_acid\nash\nalcalinity_of_ash\nmagnesium\ntotal_phenols\nflavanoids\nnonflavanoid_phenols\nproanthocyanins\ncolor_intensity\nhue\nod\nproline\nwine\n\n\n\n\n0\n13.71\n1.86\n2.36\n16.6\n101\n2.61\n2.88\n0.27\n1.69\n3.80\n1.11\n4.00\n1035\n0\n\n\n1\n13.88\n5.04\n2.23\n20.0\n80\n0.98\n0.34\n0.40\n0.68\n4.90\n0.58\n1.33\n415\n2\n\n\n2\n12.29\n1.41\n1.98\n16.0\n85\n2.55\n2.50\n0.29\n1.77\n2.90\n1.23\n2.74\n428\n1\n\n\n3\n12.21\n1.19\n1.75\n16.8\n151\n1.85\n1.28\n0.14\n2.50\n2.85\n1.28\n3.07\n718\n1\n\n\n4\n12.82\n3.37\n2.30\n19.5\n88\n1.48\n0.66\n0.40\n0.97\n10.26\n0.72\n1.75\n685\n2\n\n\n\n\n\n    \n\n  \n    \n\n  \n    \n  \n    \n\n  \n\n    \n  \n\n\n\n  \n\n\n    \n        \n    \n\n  \n\n\n\n  \n\n\n    \n  \n\n\n\n# Prepare the data\nX = wine_data.drop('wine', axis=1)  # Features (all columns except 'wine')\ny = wine_data['wine']  # Target variable ('wine' column)\n\n# Split data into training and testing sets\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n# Train a model\nmodel = RandomForestClassifier(random_state=42)\nmodel.fit(X_train, y_train)\n\n# Make predictions\npredictions = model.predict(X_test)\n\n# Evaluate the model (optional)\naccuracy = accuracy_score(y_test, predictions)\nprint(f\"Accuracy: {accuracy}\")\n\nAccuracy: 0.9166666666666666\n\n\n\n# Save predictions to CSV\nsubmission_df = pd.DataFrame(predictions, columns=['Class'])\nsubmission_df.to_csv('wine_predictions.csv', index=False)\n\nHoldout\n\nwine_holdout = pd.read_csv('wine-holdout.csv')\n\n\n# prompt: make predictions of the wine training dataset against the holdout\n\n# Make predictions on the holdout set\nholdout_predictions = model.predict(wine_holdout)\n\n# Create a submission DataFrame for the holdout predictions\nholdout_submission_df = pd.DataFrame(holdout_predictions, columns=['Class'])\n\n# Save the holdout predictions to a CSV file\nholdout_submission_df.to_csv('wine_holdout_predictions.csv', index=False)\n\nAccuracy on test set: 0.9166666666666666\n\n\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# Assuming 'model' and 'X' are already defined from your previous code\n\n# Get feature importances\nimportances = model.feature_importances_\nfeature_names = X.columns\n\n# Create a Pandas Series\nfeat_importances = pd.Series(importances, index=feature_names)\n\n# Plot the horizontal bar chart\nfeat_importances.nlargest(10).plot(kind='barh')\nplt.title('Top 10 Feature Importances')\nplt.xlabel('Importance Score')\nplt.ylabel('Feature')\nplt.show()\n\n\n\n\n\n\n\n\n\nimport pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.preprocessing import StandardScaler, OneHotEncoder\nfrom sklearn.compose import ColumnTransformer\nfrom sklearn.pipeline import Pipeline\nfrom sklearn.metrics import recall_score\n\n\n# Load the training data\nwine_data = pd.read_csv('wine-training.csv')\n\n# Separate features (X) and target (y)\nX = wine_data.drop('wine', axis=1)\ny = wine_data['wine']\n\n# Split data into training and testing sets\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n# Identify numerical and categorical features (if any)\nnumerical_features = X.select_dtypes(include=['number']).columns\ncategorical_features = X.select_dtypes(include=['object']).columns\n\n# Create transformers for numerical and categorical features\nnumerical_transformer = Pipeline(steps=[\n    ('scaler', StandardScaler())  # Normalization\n])\n\ncategorical_transformer = Pipeline(steps=[\n    ('onehot', OneHotEncoder(handle_unknown='ignore'))  # One-hot encoding\n])\n\n# Combine transformers using ColumnTransformer\npreprocessor = ColumnTransformer(\n    transformers=[\n        ('num', numerical_transformer, numerical_features),\n        ('cat', categorical_transformer, categorical_features),\n    ])\n\n# Create a pipeline with preprocessing and model\nmodel = Pipeline(steps=[\n    ('preprocessor', preprocessor),\n    ('classifier', RandomForestClassifier(random_state=42, class_weight='balanced'))  # Aim for recall\n])\n\n# Train the model\nmodel.fit(X_train, y_train)\n\n# Make predictions on the holdout set\nwine_holdout = pd.read_csv('wine-holdout.csv')\nholdout_predictions = model.predict(wine_holdout)\n\n# Create a submission DataFrame\nholdout_submission_df = pd.DataFrame(holdout_predictions, columns=['Class'])\n\n# Save the predictions to a CSV file\nholdout_submission_df.to_csv('wine_holdout_predictions.csv', index=False)\n\n# Evaluate on test set (optional)\npredictions = model.predict(X_test)\nrecall = recall_score(y_test, predictions, average='weighted')  # Calculate recall\nprint(f\"Recall: {recall}\")\n\nRecall: 0.9166666666666666\n\n\n\nimport pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.preprocessing import StandardScaler, OneHotEncoder\nfrom sklearn.compose import ColumnTransformer\nfrom sklearn.pipeline import Pipeline\nfrom sklearn.metrics import accuracy_score, recall_score, precision_score, f1_score, confusion_matrix\n\n# ... (Previous code for model training and prediction) ...\n\n# Evaluate on the test set\ntest_predictions = model.predict(X_test)\n\n# Calculate metrics for the test set\ntest_accuracy = accuracy_score(y_test, test_predictions)\ntest_recall = recall_score(y_test, test_predictions, average='weighted')\ntest_precision = precision_score(y_test, test_predictions, average='weighted')\ntest_f1 = f1_score(y_test, test_predictions, average='weighted')\ntest_confusion_matrix = confusion_matrix(y_test, test_predictions)\n\n# Print test set metrics\nprint(\"Test Set Metrics:\")\nprint(f\"Accuracy: {test_accuracy}\")\nprint(f\"Recall: {test_recall}\")\nprint(f\"Precision: {test_precision}\")\nprint(f\"F1-Score: {test_f1}\")\nprint(\"Confusion Matrix:\")\nprint(test_confusion_matrix)\n\n# Evaluate on the holdout set\nholdout_predictions = model.predict(wine_holdout)  # Assuming 'wine_holdout' is your holdout data\n\n# Since true labels for holdout are usually unknown, we can't calculate metrics\n# Instead, focus on saving predictions for submission\n\n# Create a submission DataFrame\nholdout_submission_df = pd.DataFrame(holdout_predictions, columns=['Class'])\n\n# Save the predictions to a CSV file\nholdout_submission_df.to_csv('wine_holdout_predictions.csv', index=False)\n\nprint(\"\\nHoldout predictions saved to 'wine_holdout_predictions.csv'\")\n\nTest Set Metrics:\nAccuracy: 0.9166666666666666\nRecall: 0.9166666666666666\nPrecision: 0.921875\nF1-Score: 0.9166666666666666\nConfusion Matrix:\n[[7 1 0]\n [0 8 1]\n [0 0 7]]\n\nHoldout predictions saved to 'wine_holdout_predictions.csv'\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "Cleansing_Projects/project2.html",
+    "href": "Cleansing_Projects/project2.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Cleansing",
+      "Project 2"
+    ]
+  },
+  {
+    "objectID": "Cleansing_Projects/project4.html",
+    "href": "Cleansing_Projects/project4.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Cleansing",
+      "Project 4"
+    ]
+  },
+  {
+    "objectID": "Competition/project5.html",
+    "href": "Competition/project5.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
     "text": "Paste in a template\n\n\n\n\n Back to top",
     "crumbs": [
       "Competition",
+      "Project 5"
+    ]
+  },
+  {
+    "objectID": "Competition/project1.html",
+    "href": "Competition/project1.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Competition",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Competition/project3.html",
+    "href": "Competition/project3.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Competition",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "Machine_Learning/project5.html",
+    "href": "Machine_Learning/project5.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Machine Learning",
+      "Project 5"
+    ]
+  },
+  {
+    "objectID": "Machine_Learning/project1.html",
+    "href": "Machine_Learning/project1.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Machine Learning",
+      "Project 1"
+    ]
+  },
+  {
+    "objectID": "Machine_Learning/project3.html",
+    "href": "Machine_Learning/project3.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Machine Learning",
+      "Project 3"
+    ]
+  },
+  {
+    "objectID": "notebooks/module03_housing_grading_mini.html",
+    "href": "notebooks/module03_housing_grading_mini.html",
+    "title": "Alex Tovar - Data Science Portfolio",
+    "section": "",
+    "text": "Prep work:\n\nDownload team csv predictions file\nRename files to team8-module3-predictions.csv where team8 is the name of your team\nMake sure file is one column and remove any extra columns\nMake sure the heading is set to “price” (without quotes)\nUpload csv predictions to session storage area.\nClick the folder icon, then click the upload icon (paper with an upward arrow)\nRun the notebook (Runtime -&gt; Run all)\n\n\n# MODULE 03 - HOUSING HOLDOUT GRADING\n\nfrom pathlib import Path\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nimport numpy as np\nfrom sklearn.metrics import confusion_matrix\nfrom sklearn.metrics import root_mean_squared_error, mean_squared_error, r2_score, mean_absolute_error, median_absolute_error\n\n# READ IN THE CSV FILES\nteam_dir = Path(\"./\")\nteams = team_dir.glob(\"*-predictions.csv\")\nteam_list = []\nfor team in teams:\n  # print(latent_file)\n  team_list.append((str(team).split(\"-\",1)[0],team))\n\n# print(team_list)\n\n\n# READ IN THE HOLDOUT ANSWERS\ntargets_file = \"https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/housing_holdout_test_mini_answers.csv\"\ntargets = pd.read_csv(targets_file)\n# targets\n\n\n# ARE THE STUDENT DATASETS THE CORRECT LENGTH\nstudent_datasets = {}\nfor (group, file) in team_list:\n  ds = pd.read_csv(file)\n\n  if ds.shape != targets.shape:\n    print(f\"Error group {group} ds had {ds.shape} rows and columns instead of the expected {targets.shape}. It will be excluded.\")\n  else:\n    student_datasets[group] = ds\n    print(f\"Group {group} added successfully\")\n\nGroup team8 added successfully\n\n\n\n# student_datasets\n\n\nresults_dict = {}\n\n\nfor group, student_ds in student_datasets.items():\n  student_dict = {}\n  # print(group,cm)\n  student_ds.columns=['price']\n  mse = root_mean_squared_error(targets, student_ds)\n  # print(\"{} - RMSE: {}\".format(group, mse))\n\n  student_dict[\"RMSE\"] = root_mean_squared_error(targets, student_ds)\n  student_dict[\"Mean Abs Error\"] = mean_absolute_error(targets, student_ds)\n  student_dict[\"Median Abs Error\"] = median_absolute_error(targets, student_ds)\n  student_dict[\"R2\"] = r2_score(targets, student_ds)\n\n  combined = pd.concat([targets, student_ds], axis=1)\n  combined.columns = [\"target\", \"pred\"]\n  combined[\"absdiff\"] = (combined[\"target\"] - combined[\"pred\"]).abs()\n  combined[\"absdiff_pct\"] = combined[\"absdiff\"] / combined[\"target\"]\n\n  shower = pd.DataFrame(student_ds, columns = ['price'])\n  shower.columns = ['predictions']\n  testfinal = pd.concat([shower,targets['price']],axis=1)\n  testfinal['difference'] = testfinal['price']-testfinal['predictions']\n  testfinal['percent_difference'] = abs(testfinal['difference']/testfinal['price'])\n  testfinal['percent_bucket'] = [ \"above 20%\" if i &gt;= 0.2 else \"below 20%\" for i in testfinal.percent_difference ]\n\n  # testfinal\n\n  student_dict['dataset'] = testfinal\n  percents = [5, 10, 20]\n  for percent in percents:\n    student_dict[f\"Percent of houses within {percent} percent\"] = len(combined[combined[\"absdiff_pct\"] &lt;= (percent /100)]) / len(combined) * 100\n\n  results_dict[group] = student_dict\n\n\n# df['predictions']\n\n\n# results_dict\n\n\nresults_df = pd.DataFrame(results_dict)\nresults_ds_trans = results_df.transpose()\nresults_ds_trans = results_ds_trans.drop(columns=[\"dataset\"])\n\nresults_ds_trans = results_ds_trans.round(2)\nresults_ds_trans = results_ds_trans.sort_values(by=\"R2\",ascending=False)\n\n\n# results_df\n\n\nsns.set(rc={'figure.figsize':(11.7,8.27)})\nfor team_results in results_dict.items():\n  testfinal = team_results[1]['dataset']\n  # print(team_results['dataset'])\n  # print(f\"R-Squared Value: {r2}\")\n  print(f\"-------------------------------- {team_results[0].upper()} RESULTS ---------------------------------\\n\")\n  print(f\" Within 5%: {team_results[1]['Percent of houses within 5 percent']}%\\n\",\n  f\"Within 10%: {team_results[1]['Percent of houses within 10 percent']}%\\n\",\n  f\"Within 20%: {team_results[1]['Percent of houses within 20 percent']}%\\n\",\n  f\"R^2: {team_results[1]['R2']}%\\n\",\n  f\"RMSE: {team_results[1]['RMSE']}\\n\",\n  f\"Mean Absolute Error: {team_results[1]['Mean Abs Error']}\\n\",\n  f\"Median Aboslute Error: {team_results[1]['Median Abs Error']}\")\n\n\n  color_dict = dict({'below 20%':'tab:blue',\n                    'above 20%': 'tab:orange'})\n  # print(testfinal['abspercentmiss'].describe(percentiles=[.1,.2,.3,.4,.5,.6,.7,.8,.9,.95]))\n  xlims=(0,4e6)\n  ylims=(0,4e6)\n  ax = sns.scatterplot(data=testfinal,x='price',y='predictions',hue=\"percent_bucket\",palette=color_dict)\n  # ax.set(xscale=\"log\", yscale=\"log\", xlim=xlims, ylim=ylims)\n  ax.plot(xlims,xlims, color='r')\n  # plt.legend(labels=['perfect',\"below 5\",'above 5','10-20%','above 20'])\n  plt.show()\n  print(f\"-\"*77)\n  print(\"\\n\"*3)\n\n-------------------------------- TEAM8 RESULTS ---------------------------------\n\n Within 5%: 30.864197530864196%\n Within 10%: 51.85185185185185%\n Within 20%: 82.71604938271605%\n R^2: 0.9069012577580781%\n RMSE: 87216.81001856703\n Mean Absolute Error: 57536.72839506173\n Median Aboslute Error: 38663.0\n\n\n\n\n\n\n\n\n\n-----------------------------------------------------------------------------\n\n\n\n\n\n\n\nresults_ds_trans = results_df.transpose()\n\nresults_ds_trans = results_ds_trans.drop(columns=[\"dataset\"])\nresults_ds_trans.to_csv(\"class_results.csv\")\nresults_ds_trans\n\n\n  \n    \n\n\n\n\n\n\nRMSE\nMean Abs Error\nMedian Abs Error\nR2\nPercent of houses within 5 percent\nPercent of houses within 10 percent\nPercent of houses within 20 percent\n\n\n\n\nteam8\n87216.810019\n57536.728395\n38663.0\n0.906901\n30.864198\n51.851852\n82.716049\n\n\n\n\n\n    \n\n  \n    \n\n  \n    \n  \n    \n\n  \n\n    \n  \n\n\n  \n    \n    \n\n  \n    \n  \n    \n    \n  \n\n    \n  \n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "notebooks/starter_housing.html",
+    "href": "notebooks/starter_housing.html",
+    "title": "Alex Tovar - Data Science Portfolio",
+    "section": "",
+    "text": "!pip install scikit-learn==1.5.2\n\nRequirement already satisfied: scikit-learn==1.5.2 in /usr/local/lib/python3.11/dist-packages (1.5.2)\nRequirement already satisfied: numpy&gt;=1.19.5 in /usr/local/lib/python3.11/dist-packages (from scikit-learn==1.5.2) (1.26.4)\nRequirement already satisfied: scipy&gt;=1.6.0 in /usr/local/lib/python3.11/dist-packages (from scikit-learn==1.5.2) (1.13.1)\nRequirement already satisfied: joblib&gt;=1.2.0 in /usr/local/lib/python3.11/dist-packages (from scikit-learn==1.5.2) (1.4.2)\nRequirement already satisfied: threadpoolctl&gt;=3.1.0 in /usr/local/lib/python3.11/dist-packages (from scikit-learn==1.5.2) (3.5.0)\n\n\n\nimport pandas as pd\n\nhousing = pd.read_csv('https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/housing.csv')\n\n\nimport pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.preprocessing import LabelEncoder\nimport xgboost as xgb\n\n# Load dataset (replace with actual filename)\ndata = pd.read_csv('https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/housing.csv')\n# Drop the 'id' column as it is not a useful feature\ndata = data.drop(columns=['id'])\n\n# Extract 'year_sold' from the 'date' column and drop the original 'date' column\ndata['year_sold'] = data['date'].str[:4].astype(int)\ndata = data.drop(columns=['date'])\n\n# Select only the 7 most relevant features\nselected_features = ['sqft_living', 'bedrooms', 'bathrooms', 'grade', 'condition', 'yr_built', 'zipcode']\n\nX = data.drop(columns=['price','zipcode'])\n\n# X = data[selected_features]  # Features\ny = data['price']  # Target\n\n# Encode 'zipcode' as it is categorical\n# if 'zipcode' in X.columns:\n#     le = LabelEncoder()\n#     X.loc[:, 'zipcode'] = LabelEncoder().fit_transform(X['zipcode'])\n\n# Split the dataset into training (80%) and test (20%) sets\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n# Train the XGBoost model\nxgb_model = xgb.XGBRegressor(\n    objective='reg:squarederror',\n    n_estimators=500,\n    learning_rate=0.05,\n    max_depth=6,\n    subsample=0.8,\n    colsample_bytree=0.8,\n    random_state=42\n)\n\nxgb_model.fit(X_train, y_train)\n\n# Compute R^2 scores for training and test sets\ntrain_score = xgb_model.score(X_train, y_train)\ntest_score = xgb_model.score(X_test, y_test)\n\nprint(f\"Train Score: {train_score:.4f}\")\nprint(f\"Test Score: {test_score:.4f}\")\n\nTrain Score: 0.9761\nTest Score: 0.8800\n\n\n\nimport pandas as pd\nfrom sklearn.preprocessing import LabelEncoder\n\n# Load new dataset (for prediction)\nnew_data_path = \"https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/housing_holdout_test_mini.csv\"\nnew_data = pd.read_csv(new_data_path)\n\n# Extract 'year_sold' from 'date' and drop 'id' & 'date'\nnew_data['year_sold'] = new_data['date'].str[:4].astype(int)\nnew_data = new_data.drop(columns=['id', 'date'])\n\n# Select all features dynamically (excluding 'price' if it exists)\nX_new = new_data.drop(columns=['price','zipcode'], errors='ignore').copy()  # Exclude 'price' only if present\n # Ideally, reuse the trained encoder\n\n# Predict prices using the trained model\npredicted_prices = xgb_model.predict(X_new)\n\n# Round predictions to the nearest whole number\npredicted_prices = predicted_prices.round(0)\n\n# Save predictions as a single-column CSV with header 'price'\nresults = pd.DataFrame({'price': predicted_prices})\nresults.to_csv(\"team8-module3-predictions.csv\", index=False)\n\nprint(\"Predictions saved to team8-module3-predictions.csv\")\n\nPredictions saved to team8-module3-predictions.csv\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "Machine_Learning/project4.html",
+    "href": "Machine_Learning/project4.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Machine Learning",
       "Project 4"
+    ]
+  },
+  {
+    "objectID": "Machine_Learning/project2.html",
+    "href": "Machine_Learning/project2.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Machine Learning",
+      "Project 2"
     ]
   },
   {
@@ -254,204 +319,146 @@
     "text": "Extracurriculars\n\nData Science Society Projects\nTo gain experience in a simulated and collaborative environment, contributing to the “Blood Test” project designed to provide incoming freshman experience and familiarity with data science practices and tools. Through this project, participants will become familiar with data visualization, grouping and aggregating data, discovering trends or patterns, and identifying outliers.\n\n\nIndependent Programmer (Python, R, SQL, Matplotlib,\nNumPy, Pandas, Spark) Independently contributing to projects and repositories on GitHub to build analytical and problem-solving skills outside of the classroom environment. This allows me to diversify in practical programming languages to collaborate on more projects in the future."
   },
   {
-    "objectID": "Machine_Learning/project2.html",
-    "href": "Machine_Learning/project2.html",
+    "objectID": "Competition/project4.html",
+    "href": "Competition/project4.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
     "text": "Paste in a template\n\n\n\n\n Back to top",
     "crumbs": [
-      "Machine Learning",
-      "Project 2"
-    ]
-  },
-  {
-    "objectID": "Machine_Learning/project4.html",
-    "href": "Machine_Learning/project4.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Machine Learning",
+      "Competition",
       "Project 4"
     ]
   },
   {
-    "objectID": "notebooks/starter_housing.html",
-    "href": "notebooks/starter_housing.html",
-    "title": "Alex Tovar - Data Science Portfolio",
-    "section": "",
-    "text": "!pip install scikit-learn==1.5.2\n\nRequirement already satisfied: scikit-learn==1.5.2 in /usr/local/lib/python3.11/dist-packages (1.5.2)\nRequirement already satisfied: numpy&gt;=1.19.5 in /usr/local/lib/python3.11/dist-packages (from scikit-learn==1.5.2) (1.26.4)\nRequirement already satisfied: scipy&gt;=1.6.0 in /usr/local/lib/python3.11/dist-packages (from scikit-learn==1.5.2) (1.13.1)\nRequirement already satisfied: joblib&gt;=1.2.0 in /usr/local/lib/python3.11/dist-packages (from scikit-learn==1.5.2) (1.4.2)\nRequirement already satisfied: threadpoolctl&gt;=3.1.0 in /usr/local/lib/python3.11/dist-packages (from scikit-learn==1.5.2) (3.5.0)\n\n\n\nimport pandas as pd\n\nhousing = pd.read_csv('https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/housing.csv')\n\n\nimport pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.preprocessing import LabelEncoder\nimport xgboost as xgb\n\n# Load dataset (replace with actual filename)\ndata = pd.read_csv('https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/housing.csv')\n# Drop the 'id' column as it is not a useful feature\ndata = data.drop(columns=['id'])\n\n# Extract 'year_sold' from the 'date' column and drop the original 'date' column\ndata['year_sold'] = data['date'].str[:4].astype(int)\ndata = data.drop(columns=['date'])\n\n# Select only the 7 most relevant features\nselected_features = ['sqft_living', 'bedrooms', 'bathrooms', 'grade', 'condition', 'yr_built', 'zipcode']\n\nX = data.drop(columns=['price','zipcode'])\n\n# X = data[selected_features]  # Features\ny = data['price']  # Target\n\n# Encode 'zipcode' as it is categorical\n# if 'zipcode' in X.columns:\n#     le = LabelEncoder()\n#     X.loc[:, 'zipcode'] = LabelEncoder().fit_transform(X['zipcode'])\n\n# Split the dataset into training (80%) and test (20%) sets\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n# Train the XGBoost model\nxgb_model = xgb.XGBRegressor(\n    objective='reg:squarederror',\n    n_estimators=500,\n    learning_rate=0.05,\n    max_depth=6,\n    subsample=0.8,\n    colsample_bytree=0.8,\n    random_state=42\n)\n\nxgb_model.fit(X_train, y_train)\n\n# Compute R^2 scores for training and test sets\ntrain_score = xgb_model.score(X_train, y_train)\ntest_score = xgb_model.score(X_test, y_test)\n\nprint(f\"Train Score: {train_score:.4f}\")\nprint(f\"Test Score: {test_score:.4f}\")\n\nTrain Score: 0.9761\nTest Score: 0.8800\n\n\n\nimport pandas as pd\nfrom sklearn.preprocessing import LabelEncoder\n\n# Load new dataset (for prediction)\nnew_data_path = \"https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/housing_holdout_test_mini.csv\"\nnew_data = pd.read_csv(new_data_path)\n\n# Extract 'year_sold' from 'date' and drop 'id' & 'date'\nnew_data['year_sold'] = new_data['date'].str[:4].astype(int)\nnew_data = new_data.drop(columns=['id', 'date'])\n\n# Select all features dynamically (excluding 'price' if it exists)\nX_new = new_data.drop(columns=['price','zipcode'], errors='ignore').copy()  # Exclude 'price' only if present\n # Ideally, reuse the trained encoder\n\n# Predict prices using the trained model\npredicted_prices = xgb_model.predict(X_new)\n\n# Round predictions to the nearest whole number\npredicted_prices = predicted_prices.round(0)\n\n# Save predictions as a single-column CSV with header 'price'\nresults = pd.DataFrame({'price': predicted_prices})\nresults.to_csv(\"team8-module3-predictions.csv\", index=False)\n\nprint(\"Predictions saved to team8-module3-predictions.csv\")\n\nPredictions saved to team8-module3-predictions.csv\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "notebooks/module03_housing_grading_mini.html",
-    "href": "notebooks/module03_housing_grading_mini.html",
-    "title": "Alex Tovar - Data Science Portfolio",
-    "section": "",
-    "text": "Prep work:\n\nDownload team csv predictions file\nRename files to team8-module3-predictions.csv where team8 is the name of your team\nMake sure file is one column and remove any extra columns\nMake sure the heading is set to “price” (without quotes)\nUpload csv predictions to session storage area.\nClick the folder icon, then click the upload icon (paper with an upward arrow)\nRun the notebook (Runtime -&gt; Run all)\n\n\n# MODULE 03 - HOUSING HOLDOUT GRADING\n\nfrom pathlib import Path\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nimport numpy as np\nfrom sklearn.metrics import confusion_matrix\nfrom sklearn.metrics import root_mean_squared_error, mean_squared_error, r2_score, mean_absolute_error, median_absolute_error\n\n# READ IN THE CSV FILES\nteam_dir = Path(\"./\")\nteams = team_dir.glob(\"*-predictions.csv\")\nteam_list = []\nfor team in teams:\n  # print(latent_file)\n  team_list.append((str(team).split(\"-\",1)[0],team))\n\n# print(team_list)\n\n\n# READ IN THE HOLDOUT ANSWERS\ntargets_file = \"https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/housing_holdout_test_mini_answers.csv\"\ntargets = pd.read_csv(targets_file)\n# targets\n\n\n# ARE THE STUDENT DATASETS THE CORRECT LENGTH\nstudent_datasets = {}\nfor (group, file) in team_list:\n  ds = pd.read_csv(file)\n\n  if ds.shape != targets.shape:\n    print(f\"Error group {group} ds had {ds.shape} rows and columns instead of the expected {targets.shape}. It will be excluded.\")\n  else:\n    student_datasets[group] = ds\n    print(f\"Group {group} added successfully\")\n\nGroup team8 added successfully\n\n\n\n# student_datasets\n\n\nresults_dict = {}\n\n\nfor group, student_ds in student_datasets.items():\n  student_dict = {}\n  # print(group,cm)\n  student_ds.columns=['price']\n  mse = root_mean_squared_error(targets, student_ds)\n  # print(\"{} - RMSE: {}\".format(group, mse))\n\n  student_dict[\"RMSE\"] = root_mean_squared_error(targets, student_ds)\n  student_dict[\"Mean Abs Error\"] = mean_absolute_error(targets, student_ds)\n  student_dict[\"Median Abs Error\"] = median_absolute_error(targets, student_ds)\n  student_dict[\"R2\"] = r2_score(targets, student_ds)\n\n  combined = pd.concat([targets, student_ds], axis=1)\n  combined.columns = [\"target\", \"pred\"]\n  combined[\"absdiff\"] = (combined[\"target\"] - combined[\"pred\"]).abs()\n  combined[\"absdiff_pct\"] = combined[\"absdiff\"] / combined[\"target\"]\n\n  shower = pd.DataFrame(student_ds, columns = ['price'])\n  shower.columns = ['predictions']\n  testfinal = pd.concat([shower,targets['price']],axis=1)\n  testfinal['difference'] = testfinal['price']-testfinal['predictions']\n  testfinal['percent_difference'] = abs(testfinal['difference']/testfinal['price'])\n  testfinal['percent_bucket'] = [ \"above 20%\" if i &gt;= 0.2 else \"below 20%\" for i in testfinal.percent_difference ]\n\n  # testfinal\n\n  student_dict['dataset'] = testfinal\n  percents = [5, 10, 20]\n  for percent in percents:\n    student_dict[f\"Percent of houses within {percent} percent\"] = len(combined[combined[\"absdiff_pct\"] &lt;= (percent /100)]) / len(combined) * 100\n\n  results_dict[group] = student_dict\n\n\n# df['predictions']\n\n\n# results_dict\n\n\nresults_df = pd.DataFrame(results_dict)\nresults_ds_trans = results_df.transpose()\nresults_ds_trans = results_ds_trans.drop(columns=[\"dataset\"])\n\nresults_ds_trans = results_ds_trans.round(2)\nresults_ds_trans = results_ds_trans.sort_values(by=\"R2\",ascending=False)\n\n\n# results_df\n\n\nsns.set(rc={'figure.figsize':(11.7,8.27)})\nfor team_results in results_dict.items():\n  testfinal = team_results[1]['dataset']\n  # print(team_results['dataset'])\n  # print(f\"R-Squared Value: {r2}\")\n  print(f\"-------------------------------- {team_results[0].upper()} RESULTS ---------------------------------\\n\")\n  print(f\" Within 5%: {team_results[1]['Percent of houses within 5 percent']}%\\n\",\n  f\"Within 10%: {team_results[1]['Percent of houses within 10 percent']}%\\n\",\n  f\"Within 20%: {team_results[1]['Percent of houses within 20 percent']}%\\n\",\n  f\"R^2: {team_results[1]['R2']}%\\n\",\n  f\"RMSE: {team_results[1]['RMSE']}\\n\",\n  f\"Mean Absolute Error: {team_results[1]['Mean Abs Error']}\\n\",\n  f\"Median Aboslute Error: {team_results[1]['Median Abs Error']}\")\n\n\n  color_dict = dict({'below 20%':'tab:blue',\n                    'above 20%': 'tab:orange'})\n  # print(testfinal['abspercentmiss'].describe(percentiles=[.1,.2,.3,.4,.5,.6,.7,.8,.9,.95]))\n  xlims=(0,4e6)\n  ylims=(0,4e6)\n  ax = sns.scatterplot(data=testfinal,x='price',y='predictions',hue=\"percent_bucket\",palette=color_dict)\n  # ax.set(xscale=\"log\", yscale=\"log\", xlim=xlims, ylim=ylims)\n  ax.plot(xlims,xlims, color='r')\n  # plt.legend(labels=['perfect',\"below 5\",'above 5','10-20%','above 20'])\n  plt.show()\n  print(f\"-\"*77)\n  print(\"\\n\"*3)\n\n-------------------------------- TEAM8 RESULTS ---------------------------------\n\n Within 5%: 30.864197530864196%\n Within 10%: 51.85185185185185%\n Within 20%: 82.71604938271605%\n R^2: 0.9069012577580781%\n RMSE: 87216.81001856703\n Mean Absolute Error: 57536.72839506173\n Median Aboslute Error: 38663.0\n\n\n\n\n\n\n\n\n\n-----------------------------------------------------------------------------\n\n\n\n\n\n\n\nresults_ds_trans = results_df.transpose()\n\nresults_ds_trans = results_ds_trans.drop(columns=[\"dataset\"])\nresults_ds_trans.to_csv(\"class_results.csv\")\nresults_ds_trans\n\n\n  \n    \n\n\n\n\n\n\nRMSE\nMean Abs Error\nMedian Abs Error\nR2\nPercent of houses within 5 percent\nPercent of houses within 10 percent\nPercent of houses within 20 percent\n\n\n\n\nteam8\n87216.810019\n57536.728395\n38663.0\n0.906901\n30.864198\n51.851852\n82.716049\n\n\n\n\n\n    \n\n  \n    \n\n  \n    \n  \n    \n\n  \n\n    \n  \n\n\n  \n    \n    \n\n  \n    \n  \n    \n    \n  \n\n    \n  \n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "Machine_Learning/project3.html",
-    "href": "Machine_Learning/project3.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Machine Learning",
-      "Project 3"
-    ]
-  },
-  {
-    "objectID": "Machine_Learning/project1.html",
-    "href": "Machine_Learning/project1.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Machine Learning",
-      "Project 1"
-    ]
-  },
-  {
-    "objectID": "Machine_Learning/project5.html",
-    "href": "Machine_Learning/project5.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Machine Learning",
-      "Project 5"
-    ]
-  },
-  {
-    "objectID": "Competition/project3.html",
-    "href": "Competition/project3.html",
+    "objectID": "Competition/project2.html",
+    "href": "Competition/project2.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
     "text": "Paste in a template\n\n\n\n\n Back to top",
     "crumbs": [
       "Competition",
-      "Project 3"
+      "Project 2"
     ]
   },
   {
-    "objectID": "Competition/project1.html",
-    "href": "Competition/project1.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Competition",
-      "Project 1"
-    ]
-  },
-  {
-    "objectID": "Competition/project5.html",
-    "href": "Competition/project5.html",
-    "title": "Client Report - [Insert Project Title]",
-    "section": "",
-    "text": "Paste in a template\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Competition",
-      "Project 5"
-    ]
-  },
-  {
-    "objectID": "Cleansing_Projects/project4.html",
-    "href": "Cleansing_Projects/project4.html",
+    "objectID": "Cleansing_Projects/project3.html",
+    "href": "Cleansing_Projects/project3.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
     "text": "Paste in a template\n\n\n\n\n Back to top",
     "crumbs": [
       "Data Cleansing",
-      "Project 4"
+      "Project 3"
     ]
   },
   {
-    "objectID": "Cleansing_Projects/project2.html",
-    "href": "Cleansing_Projects/project2.html",
+    "objectID": "Cleansing_Projects/project1.html",
+    "href": "Cleansing_Projects/project1.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
     "text": "Paste in a template\n\n\n\n\n Back to top",
     "crumbs": [
       "Data Cleansing",
-      "Project 2"
+      "Project 1"
     ]
   },
   {
-    "objectID": "MLPredictions.html",
-    "href": "MLPredictions.html",
-    "title": "Alex Tovar - Data Science Portfolio",
+    "objectID": "Cleansing_Projects/project5.html",
+    "href": "Cleansing_Projects/project5.html",
+    "title": "Client Report - [Insert Project Title]",
     "section": "",
-    "text": "import pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.metrics import accuracy_score\n\n\nwine_data = pd.read_csv('wine-training.csv')\n(wine_data).head()\n\n\n  \n    \n\n\n\n\n\n\nalcohol\nmalic_acid\nash\nalcalinity_of_ash\nmagnesium\ntotal_phenols\nflavanoids\nnonflavanoid_phenols\nproanthocyanins\ncolor_intensity\nhue\nod\nproline\nwine\n\n\n\n\n0\n13.71\n1.86\n2.36\n16.6\n101\n2.61\n2.88\n0.27\n1.69\n3.80\n1.11\n4.00\n1035\n0\n\n\n1\n13.88\n5.04\n2.23\n20.0\n80\n0.98\n0.34\n0.40\n0.68\n4.90\n0.58\n1.33\n415\n2\n\n\n2\n12.29\n1.41\n1.98\n16.0\n85\n2.55\n2.50\n0.29\n1.77\n2.90\n1.23\n2.74\n428\n1\n\n\n3\n12.21\n1.19\n1.75\n16.8\n151\n1.85\n1.28\n0.14\n2.50\n2.85\n1.28\n3.07\n718\n1\n\n\n4\n12.82\n3.37\n2.30\n19.5\n88\n1.48\n0.66\n0.40\n0.97\n10.26\n0.72\n1.75\n685\n2\n\n\n\n\n\n    \n\n  \n    \n\n  \n    \n  \n    \n\n  \n\n    \n  \n\n\n\n  \n\n\n    \n        \n    \n\n  \n\n\n\n  \n\n\n    \n  \n\n\n\n# Prepare the data\nX = wine_data.drop('wine', axis=1)  # Features (all columns except 'wine')\ny = wine_data['wine']  # Target variable ('wine' column)\n\n# Split data into training and testing sets\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n# Train a model\nmodel = RandomForestClassifier(random_state=42)\nmodel.fit(X_train, y_train)\n\n# Make predictions\npredictions = model.predict(X_test)\n\n# Evaluate the model (optional)\naccuracy = accuracy_score(y_test, predictions)\nprint(f\"Accuracy: {accuracy}\")\n\nAccuracy: 0.9166666666666666\n\n\n\n# Save predictions to CSV\nsubmission_df = pd.DataFrame(predictions, columns=['Class'])\nsubmission_df.to_csv('wine_predictions.csv', index=False)\n\nHoldout\n\nwine_holdout = pd.read_csv('wine-holdout.csv')\n\n\n# prompt: make predictions of the wine training dataset against the holdout\n\n# Make predictions on the holdout set\nholdout_predictions = model.predict(wine_holdout)\n\n# Create a submission DataFrame for the holdout predictions\nholdout_submission_df = pd.DataFrame(holdout_predictions, columns=['Class'])\n\n# Save the holdout predictions to a CSV file\nholdout_submission_df.to_csv('wine_holdout_predictions.csv', index=False)\n\nAccuracy on test set: 0.9166666666666666\n\n\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# Assuming 'model' and 'X' are already defined from your previous code\n\n# Get feature importances\nimportances = model.feature_importances_\nfeature_names = X.columns\n\n# Create a Pandas Series\nfeat_importances = pd.Series(importances, index=feature_names)\n\n# Plot the horizontal bar chart\nfeat_importances.nlargest(10).plot(kind='barh')\nplt.title('Top 10 Feature Importances')\nplt.xlabel('Importance Score')\nplt.ylabel('Feature')\nplt.show()\n\n\n\n\n\n\n\n\n\nimport pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.preprocessing import StandardScaler, OneHotEncoder\nfrom sklearn.compose import ColumnTransformer\nfrom sklearn.pipeline import Pipeline\nfrom sklearn.metrics import recall_score\n\n\n# Load the training data\nwine_data = pd.read_csv('wine-training.csv')\n\n# Separate features (X) and target (y)\nX = wine_data.drop('wine', axis=1)\ny = wine_data['wine']\n\n# Split data into training and testing sets\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n# Identify numerical and categorical features (if any)\nnumerical_features = X.select_dtypes(include=['number']).columns\ncategorical_features = X.select_dtypes(include=['object']).columns\n\n# Create transformers for numerical and categorical features\nnumerical_transformer = Pipeline(steps=[\n    ('scaler', StandardScaler())  # Normalization\n])\n\ncategorical_transformer = Pipeline(steps=[\n    ('onehot', OneHotEncoder(handle_unknown='ignore'))  # One-hot encoding\n])\n\n# Combine transformers using ColumnTransformer\npreprocessor = ColumnTransformer(\n    transformers=[\n        ('num', numerical_transformer, numerical_features),\n        ('cat', categorical_transformer, categorical_features),\n    ])\n\n# Create a pipeline with preprocessing and model\nmodel = Pipeline(steps=[\n    ('preprocessor', preprocessor),\n    ('classifier', RandomForestClassifier(random_state=42, class_weight='balanced'))  # Aim for recall\n])\n\n# Train the model\nmodel.fit(X_train, y_train)\n\n# Make predictions on the holdout set\nwine_holdout = pd.read_csv('wine-holdout.csv')\nholdout_predictions = model.predict(wine_holdout)\n\n# Create a submission DataFrame\nholdout_submission_df = pd.DataFrame(holdout_predictions, columns=['Class'])\n\n# Save the predictions to a CSV file\nholdout_submission_df.to_csv('wine_holdout_predictions.csv', index=False)\n\n# Evaluate on test set (optional)\npredictions = model.predict(X_test)\nrecall = recall_score(y_test, predictions, average='weighted')  # Calculate recall\nprint(f\"Recall: {recall}\")\n\nRecall: 0.9166666666666666\n\n\n\nimport pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.preprocessing import StandardScaler, OneHotEncoder\nfrom sklearn.compose import ColumnTransformer\nfrom sklearn.pipeline import Pipeline\nfrom sklearn.metrics import accuracy_score, recall_score, precision_score, f1_score, confusion_matrix\n\n# ... (Previous code for model training and prediction) ...\n\n# Evaluate on the test set\ntest_predictions = model.predict(X_test)\n\n# Calculate metrics for the test set\ntest_accuracy = accuracy_score(y_test, test_predictions)\ntest_recall = recall_score(y_test, test_predictions, average='weighted')\ntest_precision = precision_score(y_test, test_predictions, average='weighted')\ntest_f1 = f1_score(y_test, test_predictions, average='weighted')\ntest_confusion_matrix = confusion_matrix(y_test, test_predictions)\n\n# Print test set metrics\nprint(\"Test Set Metrics:\")\nprint(f\"Accuracy: {test_accuracy}\")\nprint(f\"Recall: {test_recall}\")\nprint(f\"Precision: {test_precision}\")\nprint(f\"F1-Score: {test_f1}\")\nprint(\"Confusion Matrix:\")\nprint(test_confusion_matrix)\n\n# Evaluate on the holdout set\nholdout_predictions = model.predict(wine_holdout)  # Assuming 'wine_holdout' is your holdout data\n\n# Since true labels for holdout are usually unknown, we can't calculate metrics\n# Instead, focus on saving predictions for submission\n\n# Create a submission DataFrame\nholdout_submission_df = pd.DataFrame(holdout_predictions, columns=['Class'])\n\n# Save the predictions to a CSV file\nholdout_submission_df.to_csv('wine_holdout_predictions.csv', index=False)\n\nprint(\"\\nHoldout predictions saved to 'wine_holdout_predictions.csv'\")\n\nTest Set Metrics:\nAccuracy: 0.9166666666666666\nRecall: 0.9166666666666666\nPrecision: 0.921875\nF1-Score: 0.9166666666666666\nConfusion Matrix:\n[[7 1 0]\n [0 8 1]\n [0 0 7]]\n\nHoldout predictions saved to 'wine_holdout_predictions.csv'\n\n\n\n\n\n Back to top"
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Cleansing",
+      "Project 5"
+    ]
   },
   {
-    "objectID": "cleansing.html",
-    "href": "cleansing.html",
+    "objectID": "competition.html",
+    "href": "competition.html",
     "title": "about me",
     "section": "",
     "text": "MarkDown Basics",
     "crumbs": [
-      "Data Cleansing"
+      "Competition"
     ]
   },
   {
-    "objectID": "cleansing.html#title-2-header",
-    "href": "cleansing.html#title-2-header",
+    "objectID": "competition.html#title-2-header",
+    "href": "competition.html#title-2-header",
     "title": "about me",
     "section": "",
     "text": "MarkDown Basics",
     "crumbs": [
-      "Data Cleansing"
+      "Competition"
     ]
   },
   {
-    "objectID": "Story_Telling/project4.html",
-    "href": "Story_Telling/project4.html",
+    "objectID": "Story_Telling/project3.html",
+    "href": "Story_Telling/project3.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
     "text": "Paste in a template\n\n\n\n\n Back to top",
     "crumbs": [
       "Story Telling",
-      "Project 4"
+      "Project 3"
     ]
   },
   {
-    "objectID": "Story_Telling/project2.html",
-    "href": "Story_Telling/project2.html",
+    "objectID": "Story_Telling/project1.html",
+    "href": "Story_Telling/project1.html",
     "title": "Client Report - [Insert Project Title]",
     "section": "",
     "text": "Paste in a template\n\n\n\n\n Back to top",
     "crumbs": [
       "Story Telling",
-      "Project 2"
+      "Project 1"
     ]
   },
   {
-    "objectID": "full_stack.html",
-    "href": "full_stack.html",
+    "objectID": "Story_Telling/project5.html",
+    "href": "Story_Telling/project5.html",
+    "title": "Client Report - [Insert Project Title]",
+    "section": "",
+    "text": "Paste in a template\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Story Telling",
+      "Project 5"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics"
+  },
+  {
+    "objectID": "index.html#title-2-header",
+    "href": "index.html#title-2-header",
+    "title": "about me",
+    "section": "",
+    "text": "MarkDown Basics"
+  },
+  {
+    "objectID": "story_telling.html",
+    "href": "story_telling.html",
     "title": "about me",
     "section": "",
     "text": "MarkDown Basics",
     "crumbs": [
-      "Full Stack"
+      "Story Telling"
     ]
   },
   {
-    "objectID": "full_stack.html#title-2-header",
-    "href": "full_stack.html#title-2-header",
+    "objectID": "story_telling.html#title-2-header",
+    "href": "story_telling.html#title-2-header",
     "title": "about me",
     "section": "",
     "text": "MarkDown Basics",
     "crumbs": [
-      "Full Stack"
+      "Story Telling"
     ]
-  },
-  {
-    "objectID": "Untitled0.html",
-    "href": "Untitled0.html",
-    "title": "Alex Tovar - Data Science Portfolio",
-    "section": "",
-    "text": "# Import Libraries -------------------------------------------------------------\nimport pandas as pd\nfrom plotnine import ggplot, aes, geom_bar, labs, theme_minimal, facet_wrap\n\nhello!!\n\n# Reading Data -----------------------------------------------------------------\nnetflix = pd.read_csv('https://raw.githubusercontent.com/byui-cse/cse450-course/master/data/netflix_titles.csv')\n\n\n# Movies -----------------------------------------------------------------------\nmovies = netflix[ netflix['type'] == 'Movie']\n# movies.head()\n\nratings = ['G', 'PG', 'PG-13', 'R', 'NC-17']\nmovies2 = movies[ movies['rating'].isin(ratings) ]\nmovies2['rating'].value_counts()\n\nggplot(movies2, aes(x='rating')) + \\\n    geom_bar(fill='skyblue') + \\\n    labs(title='Movie Ratings Distribution', x='Rating', y='Count') + \\\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n# Tv Shows ---------------------------------------------------------------------\ntvshows = netflix[ netflix['type'] == 'TV Show']\n# tvshows.head()\n\ntvratings = ['TV-Y', 'TV-Y7', 'TV-G']\nshows2 = tvshows[ tvshows['rating'].isin(tvratings) ]\nshows2['rating'].value_counts()\n\nggplot(shows2, aes(x='rating')) + \\\n    geom_bar(fill='skyblue') + \\\n    labs(title='Movie Ratings Distribution', x='Rating', y='Count') + \\\n    theme_minimal()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "ml.html",
