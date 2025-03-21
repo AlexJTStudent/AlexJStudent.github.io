@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -145,6 +179,479 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><a href="https://colab.research.google.com/github/AlexJTStudent/AlexJStudent.github.io/blob/main/IceChallenge.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+<div id="cell-1" class="cell" data-outputid="26e91ba3-98f8-441a-b687-7b2c47ca4bc9" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras <span class="im">import</span> layers</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error, mean_absolute_error, r2_score</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Load and preprocess data</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>training_data <span class="op">=</span> pd.read_csv(<span class="st">'/content/energy-training.csv'</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> training_data.drop(<span class="st">'Appliances'</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> training_data[<span class="st">'Appliances'</span>]</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 1a. Split data into training and testing sets</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 1b. Scale features using StandardScaler</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> scaler.fit_transform(X_train)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> scaler.transform(X_test)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Build and train the model</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> keras.Sequential([</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    layers.Dense(<span class="dv">128</span>, activation<span class="op">=</span><span class="st">'relu'</span>, input_shape<span class="op">=</span>(X_train.shape[<span class="dv">1</span>],)),  <span class="co"># Increased neurons</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    layers.Dense(<span class="dv">64</span>, activation<span class="op">=</span><span class="st">'relu'</span>),  <span class="co"># Increased neurons</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    layers.Dense(<span class="dv">1</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span><span class="st">'adam'</span>, loss<span class="op">=</span><span class="st">'mse'</span>, metrics<span class="op">=</span>[<span class="st">'mae'</span>])</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Utilize more computer resources (if available)</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a GPU if available</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co"># with tf.device('/GPU:0'):  # Replace '0' with the appropriate GPU index if you have multiple GPUs</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>model.fit(X_train, y_train, epochs<span class="op">=</span><span class="dv">200</span>, batch_size<span class="op">=</span><span class="dv">64</span>, validation_split<span class="op">=</span><span class="fl">0.2</span>)  <span class="co"># Increased epochs and batch size</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Evaluate performance on the test set</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>mse <span class="op">=</span> mean_squared_error(y_test, y_pred)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>mae <span class="op">=</span> mean_absolute_error(y_test, y_pred)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> r2_score(y_test, y_pred)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean Squared Error (MSE): </span><span class="sc">{</span>mse<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean Absolute Error (MAE): </span><span class="sc">{</span>mae<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R-squared (R2): </span><span class="sc">{</span>r2<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Load and preprocess holdout data (for prediction)</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>holdout_data <span class="op">=</span> pd.read_csv(<span class="st">'/content/energy-holdout.csv'</span>)</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>X_holdout <span class="op">=</span> scaler.transform(holdout_data)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Predict 'Appliances' for the holdout set</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>holdout_predictions <span class="op">=</span> model.predict(X_holdout)</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Add predictions to the holdout DataFrame, preserving order</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>holdout_data[<span class="st">'Appliances'</span>] <span class="op">=</span> holdout_predictions</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Save predictions to CSV</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>holdout_data[[<span class="st">'Appliances'</span>]].to_csv(<span class="st">'holdout_predictions.csv'</span>, index<span class="op">=</span><span class="va">False</span>)  <span class="co"># Save only 'Appliances' column</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Predictions saved to holdout_predictions.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch 1/200</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/usr/local/lib/python3.11/dist-packages/keras/src/layers/core/dense.py:87: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
+  super().__init__(activity_regularizer=activity_regularizer, **kwargs)</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>139/139 ━━━━━━━━━━━━━━━━━━━━ 8s 20ms/step - loss: 16919.4844 - mae: 84.1111 - val_loss: 11292.1514 - val_mae: 58.0253
+Epoch 2/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 8ms/step - loss: 10157.6133 - mae: 57.3960 - val_loss: 10449.8486 - val_mae: 55.1382
+Epoch 3/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 7ms/step - loss: 9558.1035 - mae: 54.5558 - val_loss: 10125.6094 - val_mae: 55.6274
+Epoch 4/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 9263.1748 - mae: 54.2836 - val_loss: 9902.0146 - val_mae: 53.2136
+Epoch 5/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 9288.0244 - mae: 53.7892 - val_loss: 9828.7100 - val_mae: 56.4782
+Epoch 6/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 8685.1797 - mae: 52.1939 - val_loss: 9682.0625 - val_mae: 55.4178
+Epoch 7/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 8054.5220 - mae: 50.0185 - val_loss: 9569.9941 - val_mae: 54.7225
+Epoch 8/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 8294.4219 - mae: 51.0906 - val_loss: 9508.5293 - val_mae: 56.3457
+Epoch 9/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 8313.5615 - mae: 51.5350 - val_loss: 9445.8291 - val_mae: 54.1347
+Epoch 10/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 5ms/step - loss: 8298.2803 - mae: 50.3938 - val_loss: 9346.5371 - val_mae: 52.7302
+Epoch 11/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 8333.1729 - mae: 50.6396 - val_loss: 9289.0459 - val_mae: 52.1619
+Epoch 12/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 8510.2676 - mae: 50.9303 - val_loss: 9281.7676 - val_mae: 54.5798
+Epoch 13/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 8385.4912 - mae: 51.5420 - val_loss: 9251.7959 - val_mae: 53.3166
+Epoch 14/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 8007.3652 - mae: 50.1129 - val_loss: 9204.0254 - val_mae: 50.7214
+Epoch 15/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 7989.9419 - mae: 48.6868 - val_loss: 9198.6992 - val_mae: 53.8437
+Epoch 16/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 8152.6270 - mae: 49.9745 - val_loss: 9144.7910 - val_mae: 50.5694
+Epoch 17/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 8271.0117 - mae: 49.8804 - val_loss: 9151.8057 - val_mae: 51.7687
+Epoch 18/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 8424.2461 - mae: 50.4785 - val_loss: 9101.1768 - val_mae: 52.6139
+Epoch 19/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 8162.9043 - mae: 50.4896 - val_loss: 9042.3213 - val_mae: 51.8121
+Epoch 20/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 7993.4126 - mae: 49.9721 - val_loss: 9007.7949 - val_mae: 52.2219
+Epoch 21/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 8226.2520 - mae: 50.2551 - val_loss: 8979.8750 - val_mae: 49.8709
+Epoch 22/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 7058.6836 - mae: 46.9696 - val_loss: 8996.8379 - val_mae: 51.8872
+Epoch 23/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 8162.1592 - mae: 50.4066 - val_loss: 8928.0010 - val_mae: 51.5303
+Epoch 24/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 8056.4277 - mae: 49.0593 - val_loss: 8991.5205 - val_mae: 52.1557
+Epoch 25/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 7774.6602 - mae: 48.7094 - val_loss: 8970.4180 - val_mae: 52.0192
+Epoch 26/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 8078.0859 - mae: 49.9559 - val_loss: 8839.9150 - val_mae: 49.6531
+Epoch 27/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 7855.9092 - mae: 47.7237 - val_loss: 8787.2783 - val_mae: 51.7349
+Epoch 28/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 7921.2534 - mae: 49.1936 - val_loss: 8755.8467 - val_mae: 51.7181
+Epoch 29/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 7842.0044 - mae: 48.8523 - val_loss: 8713.1045 - val_mae: 51.2081
+Epoch 30/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 5ms/step - loss: 7300.4146 - mae: 46.7909 - val_loss: 8692.4736 - val_mae: 50.2401
+Epoch 31/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 5ms/step - loss: 7521.4492 - mae: 48.1866 - val_loss: 8629.2783 - val_mae: 50.4965
+Epoch 32/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 7275.3721 - mae: 46.7603 - val_loss: 8632.1084 - val_mae: 48.3840
+Epoch 33/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 7372.0498 - mae: 47.8663 - val_loss: 8605.4199 - val_mae: 51.4824
+Epoch 34/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 7287.8428 - mae: 47.3101 - val_loss: 8681.7881 - val_mae: 53.0578
+Epoch 35/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 7286.5576 - mae: 47.6684 - val_loss: 8586.6875 - val_mae: 52.0667
+Epoch 36/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 7057.9570 - mae: 47.0983 - val_loss: 8539.7354 - val_mae: 51.3108
+Epoch 37/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 7625.8184 - mae: 47.8845 - val_loss: 8513.4092 - val_mae: 50.3586
+Epoch 38/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 7026.9961 - mae: 46.0065 - val_loss: 8529.5742 - val_mae: 51.6741
+Epoch 39/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 7466.8750 - mae: 47.7957 - val_loss: 8448.6230 - val_mae: 48.4213
+Epoch 40/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 7374.9492 - mae: 46.6653 - val_loss: 8516.5010 - val_mae: 51.5877
+Epoch 41/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 6982.2778 - mae: 45.9360 - val_loss: 8450.5977 - val_mae: 51.0922
+Epoch 42/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 7075.5288 - mae: 46.8926 - val_loss: 8417.7793 - val_mae: 49.3608
+Epoch 43/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 7215.4512 - mae: 46.7294 - val_loss: 8486.5723 - val_mae: 49.1804
+Epoch 44/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 6920.4863 - mae: 45.7040 - val_loss: 8374.7412 - val_mae: 50.1712
+Epoch 45/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 6632.9775 - mae: 45.5644 - val_loss: 8532.3633 - val_mae: 52.2835
+Epoch 46/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 6682.3848 - mae: 46.3150 - val_loss: 8408.8750 - val_mae: 50.0284
+Epoch 47/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 7102.9512 - mae: 46.0667 - val_loss: 8426.0723 - val_mae: 50.7263
+Epoch 48/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 6450.7573 - mae: 44.7674 - val_loss: 8326.8604 - val_mae: 49.3058
+Epoch 49/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 6918.5332 - mae: 46.1050 - val_loss: 8282.3164 - val_mae: 49.8209
+Epoch 50/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 6900.2759 - mae: 46.5505 - val_loss: 8342.0059 - val_mae: 49.4670
+Epoch 51/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 6712.5649 - mae: 45.2309 - val_loss: 8342.0176 - val_mae: 51.2399
+Epoch 52/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 5ms/step - loss: 6778.9575 - mae: 45.6440 - val_loss: 8251.9346 - val_mae: 49.0944
+Epoch 53/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 5ms/step - loss: 6757.7305 - mae: 45.0385 - val_loss: 8306.4521 - val_mae: 50.3431
+Epoch 54/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 6502.5093 - mae: 45.0637 - val_loss: 8286.8203 - val_mae: 49.6268
+Epoch 55/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 6389.4292 - mae: 43.8687 - val_loss: 8269.8799 - val_mae: 49.2479
+Epoch 56/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 7147.8672 - mae: 46.5142 - val_loss: 8246.8350 - val_mae: 50.6866
+Epoch 57/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 6527.9707 - mae: 45.3003 - val_loss: 8260.6719 - val_mae: 50.7183
+Epoch 58/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 6270.4233 - mae: 44.3391 - val_loss: 8180.0781 - val_mae: 49.8501
+Epoch 59/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 6582.6440 - mae: 45.1952 - val_loss: 8284.8945 - val_mae: 52.2255
+Epoch 60/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 6531.3184 - mae: 45.5129 - val_loss: 8236.0234 - val_mae: 50.5258
+Epoch 61/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 6138.4028 - mae: 43.8709 - val_loss: 8145.9668 - val_mae: 49.9585
+Epoch 62/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 6419.1338 - mae: 44.8574 - val_loss: 8145.1035 - val_mae: 49.3162
+Epoch 63/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 6747.7275 - mae: 45.3120 - val_loss: 8195.5527 - val_mae: 49.3024
+Epoch 64/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 6455.7515 - mae: 45.0634 - val_loss: 8141.4229 - val_mae: 48.8221
+Epoch 65/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 6816.4663 - mae: 45.7517 - val_loss: 8155.7124 - val_mae: 50.0629
+Epoch 66/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 6734.5596 - mae: 46.0778 - val_loss: 8287.2119 - val_mae: 51.6077
+Epoch 67/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 6598.1587 - mae: 44.5952 - val_loss: 8262.2803 - val_mae: 50.2750
+Epoch 68/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 6840.3843 - mae: 46.2842 - val_loss: 8188.1387 - val_mae: 48.5737
+Epoch 69/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 6610.2461 - mae: 45.5819 - val_loss: 8137.2725 - val_mae: 49.9233
+Epoch 70/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 6104.7119 - mae: 44.0720 - val_loss: 8110.0996 - val_mae: 48.4684
+Epoch 71/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 6353.9761 - mae: 44.5689 - val_loss: 8116.9810 - val_mae: 48.2437
+Epoch 72/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 6277.6162 - mae: 44.4457 - val_loss: 8076.5864 - val_mae: 48.5406
+Epoch 73/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 5ms/step - loss: 5756.1743 - mae: 42.3799 - val_loss: 8389.6875 - val_mae: 53.1435
+Epoch 74/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 5ms/step - loss: 6548.3174 - mae: 45.5989 - val_loss: 8057.4111 - val_mae: 47.5777
+Epoch 75/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 6171.2383 - mae: 43.6352 - val_loss: 8083.6860 - val_mae: 49.5166
+Epoch 76/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5855.1763 - mae: 42.9635 - val_loss: 8001.3892 - val_mae: 47.9447
+Epoch 77/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 6449.9946 - mae: 45.0596 - val_loss: 8158.1338 - val_mae: 47.4062
+Epoch 78/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 6363.4468 - mae: 44.1882 - val_loss: 8079.0942 - val_mae: 48.6686
+Epoch 79/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 6126.6313 - mae: 43.3937 - val_loss: 8263.5059 - val_mae: 54.3357
+Epoch 80/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5912.4717 - mae: 43.4406 - val_loss: 8153.1860 - val_mae: 49.4222
+Epoch 81/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 6437.6714 - mae: 44.7094 - val_loss: 8075.2017 - val_mae: 47.6817
+Epoch 82/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 5809.5371 - mae: 43.1121 - val_loss: 8243.4590 - val_mae: 53.1069
+Epoch 83/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 6068.6904 - mae: 44.1453 - val_loss: 8180.1099 - val_mae: 50.2271
+Epoch 84/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 5977.8193 - mae: 43.4651 - val_loss: 8226.1484 - val_mae: 51.8220
+Epoch 85/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 5598.9600 - mae: 42.3419 - val_loss: 8141.6177 - val_mae: 50.0789
+Epoch 86/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 5581.4648 - mae: 42.5872 - val_loss: 8095.1494 - val_mae: 47.8000
+Epoch 87/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 5759.6157 - mae: 42.6959 - val_loss: 8108.7007 - val_mae: 49.6191
+Epoch 88/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 5699.8154 - mae: 43.2459 - val_loss: 8027.7788 - val_mae: 49.4456
+Epoch 89/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5815.9512 - mae: 42.7044 - val_loss: 8005.4893 - val_mae: 50.1206
+Epoch 90/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 5982.1875 - mae: 43.6572 - val_loss: 8121.2349 - val_mae: 49.2487
+Epoch 91/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 6151.3779 - mae: 44.0424 - val_loss: 8144.0083 - val_mae: 53.9490
+Epoch 92/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5849.7808 - mae: 43.6050 - val_loss: 8146.9980 - val_mae: 53.7287
+Epoch 93/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 5ms/step - loss: 6047.8140 - mae: 44.6060 - val_loss: 7978.3706 - val_mae: 48.6240
+Epoch 94/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 5ms/step - loss: 5893.5635 - mae: 42.4641 - val_loss: 8008.1348 - val_mae: 49.6838
+Epoch 95/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 5ms/step - loss: 5774.2773 - mae: 42.9954 - val_loss: 7975.1323 - val_mae: 48.7938
+Epoch 96/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 6071.5591 - mae: 44.1517 - val_loss: 7951.0137 - val_mae: 49.3879
+Epoch 97/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5925.3774 - mae: 43.6231 - val_loss: 8042.6860 - val_mae: 49.0461
+Epoch 98/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5292.1353 - mae: 41.1153 - val_loss: 8152.6646 - val_mae: 52.9900
+Epoch 99/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 5717.6128 - mae: 43.4870 - val_loss: 7960.2402 - val_mae: 48.8650
+Epoch 100/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5386.2852 - mae: 41.3665 - val_loss: 8018.5010 - val_mae: 49.9066
+Epoch 101/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5890.9971 - mae: 43.1670 - val_loss: 7927.0747 - val_mae: 49.8785
+Epoch 102/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5738.5254 - mae: 42.4332 - val_loss: 7991.0952 - val_mae: 48.5538
+Epoch 103/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 5771.3667 - mae: 42.8712 - val_loss: 7907.0835 - val_mae: 49.0924
+Epoch 104/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5424.0059 - mae: 41.5374 - val_loss: 8154.9092 - val_mae: 51.1137
+Epoch 105/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 5719.9150 - mae: 43.7480 - val_loss: 8021.4497 - val_mae: 50.1824
+Epoch 106/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5469.0078 - mae: 42.4867 - val_loss: 7931.5942 - val_mae: 48.9583
+Epoch 107/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5363.0205 - mae: 41.6529 - val_loss: 8047.8291 - val_mae: 50.2324
+Epoch 108/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5662.9229 - mae: 42.7208 - val_loss: 8030.6934 - val_mae: 51.6784
+Epoch 109/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5453.8589 - mae: 41.9325 - val_loss: 8097.0781 - val_mae: 50.4769
+Epoch 110/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 5414.8042 - mae: 42.2434 - val_loss: 8104.5674 - val_mae: 52.0499
+Epoch 111/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5280.7427 - mae: 41.7166 - val_loss: 7997.0352 - val_mae: 50.6827
+Epoch 112/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5697.6416 - mae: 43.0679 - val_loss: 8087.6250 - val_mae: 49.9017
+Epoch 113/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5876.1025 - mae: 43.3276 - val_loss: 7935.4712 - val_mae: 50.3441
+Epoch 114/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5865.1436 - mae: 42.9454 - val_loss: 8054.9639 - val_mae: 48.7424
+Epoch 115/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5402.7178 - mae: 41.3467 - val_loss: 7902.9614 - val_mae: 48.3611
+Epoch 116/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 5332.6943 - mae: 41.4098 - val_loss: 8054.5728 - val_mae: 49.1914
+Epoch 117/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5476.5527 - mae: 41.8528 - val_loss: 7984.1904 - val_mae: 51.0058
+Epoch 118/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 5749.7363 - mae: 42.9595 - val_loss: 7983.3428 - val_mae: 48.4737
+Epoch 119/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 5459.0112 - mae: 41.4611 - val_loss: 7855.5513 - val_mae: 48.3523
+Epoch 120/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 5242.3579 - mae: 41.7851 - val_loss: 7932.0181 - val_mae: 50.1608
+Epoch 121/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 5267.0415 - mae: 41.2207 - val_loss: 7975.3257 - val_mae: 50.7399
+Epoch 122/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5569.3584 - mae: 42.0274 - val_loss: 7945.7129 - val_mae: 49.5791
+Epoch 123/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 5575.2153 - mae: 42.3081 - val_loss: 7862.7275 - val_mae: 49.2778
+Epoch 124/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 5045.1069 - mae: 40.4137 - val_loss: 7946.4570 - val_mae: 50.1174
+Epoch 125/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4984.1943 - mae: 40.5995 - val_loss: 7929.8066 - val_mae: 50.7216
+Epoch 126/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 5521.5103 - mae: 42.8719 - val_loss: 7905.4946 - val_mae: 49.4972
+Epoch 127/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 5105.8550 - mae: 41.2967 - val_loss: 7910.4028 - val_mae: 49.6587
+Epoch 128/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4798.8188 - mae: 39.6810 - val_loss: 7858.7471 - val_mae: 49.4054
+Epoch 129/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 5315.5986 - mae: 41.3057 - val_loss: 7983.0718 - val_mae: 50.2678
+Epoch 130/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5493.1768 - mae: 42.8445 - val_loss: 7934.6943 - val_mae: 51.5800
+Epoch 131/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4789.5962 - mae: 39.4207 - val_loss: 7864.2778 - val_mae: 50.3411
+Epoch 132/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4720.7856 - mae: 39.8893 - val_loss: 8151.4883 - val_mae: 52.3285
+Epoch 133/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 5ms/step - loss: 5347.3208 - mae: 42.3164 - val_loss: 8008.8311 - val_mae: 51.5311
+Epoch 134/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 5ms/step - loss: 5481.1792 - mae: 42.4164 - val_loss: 7857.1943 - val_mae: 49.6211
+Epoch 135/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 5ms/step - loss: 5705.3560 - mae: 43.1522 - val_loss: 7854.5825 - val_mae: 49.0653
+Epoch 136/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 5ms/step - loss: 5427.1553 - mae: 41.9625 - val_loss: 7965.5874 - val_mae: 50.0863
+Epoch 137/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 5226.2261 - mae: 41.3941 - val_loss: 7826.3687 - val_mae: 48.5786
+Epoch 138/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 5139.3188 - mae: 41.4281 - val_loss: 7890.4731 - val_mae: 49.8334
+Epoch 139/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 5052.2192 - mae: 40.6321 - val_loss: 7785.1870 - val_mae: 49.9419
+Epoch 140/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4893.3320 - mae: 40.1754 - val_loss: 7759.4072 - val_mae: 48.1112
+Epoch 141/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 5071.3110 - mae: 40.8855 - val_loss: 7961.3706 - val_mae: 50.4298
+Epoch 142/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 5483.4683 - mae: 42.5893 - val_loss: 7933.2500 - val_mae: 49.0426
+Epoch 143/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4951.2510 - mae: 40.6608 - val_loss: 7958.3911 - val_mae: 49.2787
+Epoch 144/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5362.4302 - mae: 42.1485 - val_loss: 7803.0200 - val_mae: 48.5522
+Epoch 145/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5007.1147 - mae: 40.6782 - val_loss: 7935.3579 - val_mae: 49.4630
+Epoch 146/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 4911.5361 - mae: 39.9068 - val_loss: 7886.4722 - val_mae: 49.1248
+Epoch 147/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4841.0117 - mae: 40.2432 - val_loss: 7845.9136 - val_mae: 48.8003
+Epoch 148/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4753.0454 - mae: 39.7188 - val_loss: 7835.7798 - val_mae: 50.4459
+Epoch 149/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5090.4707 - mae: 41.5976 - val_loss: 7988.5630 - val_mae: 50.6088
+Epoch 150/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 5020.4429 - mae: 40.6010 - val_loss: 7782.7808 - val_mae: 49.6457
+Epoch 151/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4892.8184 - mae: 40.2570 - val_loss: 7896.9795 - val_mae: 50.2041
+Epoch 152/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 4791.3335 - mae: 40.3859 - val_loss: 7759.8516 - val_mae: 49.0300
+Epoch 153/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 4920.2300 - mae: 40.9959 - val_loss: 7865.3887 - val_mae: 48.9904
+Epoch 154/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 5ms/step - loss: 5244.4722 - mae: 41.6608 - val_loss: 7764.2651 - val_mae: 49.9517
+Epoch 155/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4564.7197 - mae: 39.5746 - val_loss: 8032.5854 - val_mae: 52.0715
+Epoch 156/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 8ms/step - loss: 4953.6592 - mae: 40.9675 - val_loss: 8149.1348 - val_mae: 50.4579
+Epoch 157/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 5192.6572 - mae: 41.3784 - val_loss: 8134.2930 - val_mae: 53.6568
+Epoch 158/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4643.1987 - mae: 40.0253 - val_loss: 8245.2412 - val_mae: 53.8717
+Epoch 159/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4554.0645 - mae: 40.0233 - val_loss: 8007.7588 - val_mae: 50.5148
+Epoch 160/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4841.3418 - mae: 40.4654 - val_loss: 7856.2607 - val_mae: 50.6380
+Epoch 161/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 4898.4404 - mae: 41.1735 - val_loss: 7963.8496 - val_mae: 51.2158
+Epoch 162/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4814.2090 - mae: 40.6472 - val_loss: 7951.8760 - val_mae: 50.1792
+Epoch 163/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4728.6084 - mae: 40.1178 - val_loss: 7894.3472 - val_mae: 49.1435
+Epoch 164/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 4655.9155 - mae: 39.7979 - val_loss: 7897.4390 - val_mae: 49.8684
+Epoch 165/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 4479.6309 - mae: 39.8550 - val_loss: 8035.1367 - val_mae: 50.6336
+Epoch 166/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 4527.0933 - mae: 39.1583 - val_loss: 8143.2256 - val_mae: 53.2819
+Epoch 167/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 4946.5190 - mae: 40.8916 - val_loss: 7863.1133 - val_mae: 49.6618
+Epoch 168/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4559.6489 - mae: 39.3351 - val_loss: 7763.9404 - val_mae: 49.4567
+Epoch 169/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4472.4321 - mae: 39.3160 - val_loss: 8129.1045 - val_mae: 51.7523
+Epoch 170/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4754.3413 - mae: 40.5338 - val_loss: 7879.8955 - val_mae: 50.0638
+Epoch 171/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 4702.5874 - mae: 39.8963 - val_loss: 7807.5396 - val_mae: 50.1633
+Epoch 172/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4861.9106 - mae: 41.0930 - val_loss: 7813.4648 - val_mae: 49.2090
+Epoch 173/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 4438.4727 - mae: 39.1027 - val_loss: 8014.5825 - val_mae: 51.8586
+Epoch 174/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 5ms/step - loss: 4842.7808 - mae: 40.2788 - val_loss: 7886.8154 - val_mae: 50.7899
+Epoch 175/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 5ms/step - loss: 4547.6084 - mae: 39.7432 - val_loss: 8062.7983 - val_mae: 52.3661
+Epoch 176/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 5ms/step - loss: 4997.7642 - mae: 41.4260 - val_loss: 7846.3784 - val_mae: 50.5377
+Epoch 177/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4579.7256 - mae: 39.7806 - val_loss: 7800.3589 - val_mae: 49.8657
+Epoch 178/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4434.1138 - mae: 39.1035 - val_loss: 7867.9648 - val_mae: 50.8570
+Epoch 179/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4678.6045 - mae: 39.9512 - val_loss: 7803.1431 - val_mae: 49.1338
+Epoch 180/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 4856.2520 - mae: 40.3890 - val_loss: 7821.8130 - val_mae: 49.4777
+Epoch 181/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 4611.3550 - mae: 40.0992 - val_loss: 7910.6348 - val_mae: 50.7880
+Epoch 182/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 4732.2710 - mae: 39.9768 - val_loss: 7757.1743 - val_mae: 48.9449
+Epoch 183/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4515.2612 - mae: 39.6214 - val_loss: 7888.5566 - val_mae: 49.9183
+Epoch 184/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 4588.1733 - mae: 39.9021 - val_loss: 7737.2930 - val_mae: 49.5928
+Epoch 185/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4571.0830 - mae: 39.2246 - val_loss: 7865.3452 - val_mae: 51.3735
+Epoch 186/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 4361.1938 - mae: 39.3373 - val_loss: 7875.2637 - val_mae: 50.4986
+Epoch 187/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4562.4048 - mae: 39.3547 - val_loss: 7957.1089 - val_mae: 51.7982
+Epoch 188/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 4377.6855 - mae: 39.3381 - val_loss: 7946.9741 - val_mae: 50.9189
+Epoch 189/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 4433.2290 - mae: 39.3934 - val_loss: 7833.0703 - val_mae: 51.5004
+Epoch 190/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 3ms/step - loss: 4567.8232 - mae: 39.8874 - val_loss: 7977.7310 - val_mae: 52.3793
+Epoch 191/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4339.6382 - mae: 39.1236 - val_loss: 7942.0708 - val_mae: 51.3152
+Epoch 192/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4698.6934 - mae: 39.7167 - val_loss: 7887.2349 - val_mae: 52.4531
+Epoch 193/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 4415.8799 - mae: 38.8989 - val_loss: 7971.6680 - val_mae: 52.3898
+Epoch 194/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 6ms/step - loss: 4697.5317 - mae: 40.0345 - val_loss: 7954.6089 - val_mae: 50.5517
+Epoch 195/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 5ms/step - loss: 4244.6680 - mae: 38.6138 - val_loss: 7867.5449 - val_mae: 50.5358
+Epoch 196/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4265.2822 - mae: 38.3969 - val_loss: 7995.7690 - val_mae: 53.1810
+Epoch 197/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4723.9727 - mae: 40.7110 - val_loss: 7972.2363 - val_mae: 49.3264
+Epoch 198/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 0s 3ms/step - loss: 4225.3638 - mae: 38.3328 - val_loss: 7731.9551 - val_mae: 49.6191
+Epoch 199/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4443.6851 - mae: 39.3060 - val_loss: 7847.8813 - val_mae: 49.9236
+Epoch 200/200
+139/139 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - loss: 4079.5369 - mae: 37.6485 - val_loss: 7746.6060 - val_mae: 49.6606
+87/87 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step
+Mean Squared Error (MSE): 6041.79736328125
+Mean Absolute Error (MAE): 45.84733200073242
+R-squared (R2): 0.3289639949798584
+183/183 ━━━━━━━━━━━━━━━━━━━━ 0s 2ms/step
+Predictions saved to holdout_predictions.csv</code></pre>
+</div>
+</div>
 
 
 
